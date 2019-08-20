@@ -13,5 +13,5 @@
 
 Route::get('/','indexLoginController@loginPage');
 Route::post('/checkAuth','indexLoginController@checkAuth');
-Route::get('/123','indexLoginController@loginPage');
+
 Route::get('/index','indexLoginController@loginSuccess');

@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','indexLoginController@loginPage');
+Route::post('/checkAuth','indexLoginController@checkAuth');
+Route::get('/index','indexLoginController@loginSuccess');

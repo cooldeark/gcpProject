@@ -38,6 +38,6 @@ class IndexLoginController extends Controller
     }
 
     public function loginSuccess(){
-        return view('login.indexPage');
+        return view('login.index');
     }
 }

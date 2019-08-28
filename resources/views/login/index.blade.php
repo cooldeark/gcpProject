@@ -3,8 +3,8 @@
     <head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><!--css about font-awesome-->
@@ -14,7 +14,7 @@
 <title>手錶專賣</title>
     </head>
     <body style="background-color:#4D4D4F;">
-        
+        <div id="logOutButton" style="margin-top:1%;margin-right:1%;cursor:pointer;" class="text-right" ><a class="text-white " href="{{ url('/logout') }}"><b>登出</b></a></div>
         <div id=" blog-header headTopContainer" class="container">
             <div class=" py-3 row align-items-center">
                 <div class="col-12">
@@ -60,6 +60,10 @@
         </div> -->
 
 <script>
+    // window.addEventListener("popstate", function(){
+    //     alert("test");
+    // }, false)
+    
    $(function() {
     $(".flexslider").flexslider({
         animation: "slide",
@@ -69,6 +73,27 @@
         touch: true, //是否支持触屏滑动
         animationLoop:true
     });
+
+    
+    
+
+    /*拿資料為主
+    $('#logOutButton').click(function(){
+        $.ajax({
+            method:'GET',
+            url:'logout',
+            data:{},
+            success: function( response ){
+                // window.location.href = "http://127.0.0.1:8000/";
+            },
+            error: function( e ) {
+                console.log(e);
+            }
+        });
+    });
+    */
+    
+    
     });	
   
 </script>

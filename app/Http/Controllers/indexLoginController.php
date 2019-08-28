@@ -1,21 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
+
+// use Request;//這個跟下面Request::get('userPwd')是一套的
+use Auth;//如果要使用驗證要有這個
 use DB;//need import this to use DB::
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;//這個是用在Request $requests
 use App\UserModel;//你要使用的model
 use Redirect;//要用Redirect back 要import這個
+
+
 class IndexLoginController extends Controller
 {
     public function loginPage(){
-        return view('login.loginPage');
+        if(Auth::check()){//判斷你是否有登入，如果有登入是回不到登入頁面的
+            // print_r("true");exit;
+            return redirect()->action('indexLoginController@loginSuccess');
+        }else{
+            // print_r("false");exit;
+            return view('login.loginPage');
+        }
+        
     }
 
     public function checkAuth(Request $requests){//form input need $request to catched
+        if(Auth::check()){
+            return redirect()->action('indexLoginController@loginSuccess');
+        }else{
         $userEmail=$requests->userName;
-        $userPwd=$requests->userPwd;
+        $userPwd=$requests->userPwd;//自動會幫你hash不用自己來
+        // $hashUserPwd=bcrypt($requests->userPwd);//這個是讓密碼加密
+        // print_r($hashUserPwd);exit;
+        // $userPwd=$requests->userPwd;
+        // print_r($userPwd);exit;
+        // $test = bcrypt(Request::get('userPwd'));//這個是可以直接取得輸入的值
+        
+        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){
+            return redirect()->action('indexLoginController@loginSuccess');
+        }else{
+            return Redirect::back()->withErrors(['PwdError'=>"PwdError", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
+        }
         // $myAllUser=new UserModel();
         // print_r($myAllUser);exit;
+        /*
+        //以下是使用DB直接去確認的方式
         $userData = DB::table('users')->get();//get all data
         $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
         $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
@@ -33,11 +61,67 @@ class IndexLoginController extends Controller
             return Redirect::back()->withErrors(['PwdError'=>"PwdError!!", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快，這裡的Redirect是檔案，看清楚後面有接兩個分號所以是檔案，呼叫底下的back funciton
             // return redirect()->route('MyLoginPage', [$msg]);//使用此方式route要有給予name，然後你帶的參數會放在網址上
         }
+        */
         // print_r($userNameCheck);exit;
+        }
+        
         
     }
 
     public function loginSuccess(){
-        return view('login.index');
+        if(Auth::check()){  
+            return view('login.index');
+        }else{
+            // return redirect()->action('indexLoginController@loginPage');
+            return view('login.loginPage');
+        }
+        
+    }
+
+    public function logOut(){
+        Auth::logout();
+        return redirect()->action('indexLoginController@loginPage');
+    }
+
+    public function register(){
+        if(Auth::check()){
+            return redirect()->action('indexLoginController@loginSuccess');
+        }else{
+            return view('login.registerPage');
+        }
+        
+    }
+
+    public function createUser(Request $request){
+        $userName=$request->userName;
+        $userMail=$request->userMail;
+        $userPwd=bcrypt($request->userPwd);
+        $checkUserExist=DB::table('users')->where('name',$userName)->first();
+        $checkMailExist=DB::table('users')->where('email',$userMail)->first();
+        // $userCheckPwd=$request->userCheckPwd;
+        if($checkUserExist&&$checkMailExist){
+            return Redirect::back()->withErrors(['alreadyExist'=>'使用者與信箱皆已註冊過，請更換']);//如果要帶值回頁面提醒，這方式還是最快
+        }else if($checkUserExist){
+            return Redirect::back()->withErrors(['alreadyExist'=>'使用者已註冊過，請更換']);
+        }else if($checkMailExist){
+            return Redirect::back()->withErrors(['alreadyExist'=>'信箱已註冊過，請更換']);
+        }else{
+            $createUser=UserModel::create([
+                'name'=>$userName,
+                'email'=>$userMail,
+                'password'=>$userPwd
+            ]);
+        }
+        
+        
+        return redirect()->action('indexLoginController@loginPage');
+/*
+        $test=new \stdClass();//新版要這樣宣告object
+        $test->name=$userName;
+        $test->mail=$userMail;
+        $test->pwd=$userPwd;
+        $test->dbpwd=$userCheckPwd;
+        print_r($test);exit;
+*/
     }
 }

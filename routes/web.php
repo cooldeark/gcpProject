@@ -13,5 +13,7 @@
 
 Route::get('/','indexLoginController@loginPage');
 Route::post('/checkAuth','indexLoginController@checkAuth');
-
 Route::get('/index','indexLoginController@loginSuccess');
+Route::get('/logout','indexLoginController@logOut');
+Route::get('/register','indexLoginController@register');
+Route::post('/userRegist','indexLoginController@createUser');

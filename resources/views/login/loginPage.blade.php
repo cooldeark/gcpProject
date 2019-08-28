@@ -26,7 +26,8 @@
                             <div class="form-group">
                                 <input type="text" id="loginAccount" class=" form-control fadeInDown" name="userName" placeholder="UserAccount"/>
                                 <input type="text" style="-webkit-text-security: disc;" id="password" class="  form-control fadeInDown"  name="userPwd" placeholder="UserPassword"/><!--style is gonna make input like password-->
-                                <input type="submit" class="fadeInDown" id="submitBtn" value="Log In" onclick="return false"/>
+                                <input type="submit" class="fadeInDown" id="submitBtn" value="登入" onclick="return false"/>
+                                <a id="registerBtn" class="fadeInDown" href="{{url('/register')}}" style="cursor:auto;">註冊</a>
                                 <div id="emailError" style="display:none;color:red;"><b>Email format not correct!</b></div>
                                 <div id="PwdError" style="display:none;color:red;"><b>Pwd can't be empty!</b></div>
                                 <div id="emailPwdError" style="display:none;color:red;"><b>Email & Pwd Not Correct!</b></div>

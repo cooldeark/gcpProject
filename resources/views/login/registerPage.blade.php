@@ -126,13 +126,14 @@ $('.btn-primary').click(function(){
         $('#userPwdCheck').text('請輸入密碼');
         checkPwd=false;
     }else{
-        var checkChinese=new RegExp("^[a-zA-Z0-9]+$");
+        // var checkChinese=new RegExp("^[a-zA-Z0-9]+$");//只能輸入英數字，這裡有差異一個加號
+        var checkChinese=new RegExp("^[a-zA-Z0-9]{6,12}$");
         if(checkChinese.test(userPwdInput)){
             $('#userPwdCheck').hide();
             checkPwd=true;
         }else{
             $('#userPwdCheck').show();
-            $('#userPwdCheck').text('請輸入正確格式');
+            $('#userPwdCheck').text('請輸入正確格式，長度需6~12位元');
             checkPwd=false;
         }
     }

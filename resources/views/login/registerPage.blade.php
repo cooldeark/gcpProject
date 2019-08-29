@@ -144,7 +144,7 @@ $('.btn-primary').click(function(){
         $('#userPwdDBCheck').text('請輸入密碼');
         checkDBPwd=false;
     }else{
-        var checkChinese=new RegExp("^[a-zA-Z0-9]+$");
+        var checkChinese=new RegExp("^[a-zA-Z0-9]{6,12}$");
         if(checkChinese.test(userPwdCheckInput)){
             $('#userPwdDBCheck').hide();
             checkDBPwd=true;

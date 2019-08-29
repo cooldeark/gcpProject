@@ -17,3 +17,7 @@ Route::get('/index','indexLoginController@loginSuccess');
 Route::get('/logout','indexLoginController@logOut');
 Route::get('/register','indexLoginController@register');
 Route::post('/userRegist','indexLoginController@createUser');
+Route::get('/aboutMe','indexLoginController@aboutMe');
+Route::get('/test',function(){
+    return view('/welcome');
+});

@@ -34,11 +34,16 @@ class IndexLoginController extends Controller
         // $userPwd=$requests->userPwd;
         // print_r($userPwd);exit;
         // $test = bcrypt(Request::get('userPwd'));//這個是可以直接取得輸入的值
-        
+        $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
+        $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
         if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){
             return redirect()->action('indexLoginController@loginSuccess');
+        }else if($userNameCheck){
+            return Redirect::back()->withErrors(['PwdError'=>"密碼錯誤", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
+        }else if($userPwdCheck){
+            return Redirect::back()->withErrors(['PwdError'=>"此信箱不存在", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
         }else{
-            return Redirect::back()->withErrors(['PwdError'=>"PwdError", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
+            return Redirect::back()->withErrors(['PwdError'=>"無此使用者", 'Shit'=>"fuck"]);
         }
         // $myAllUser=new UserModel();
         // print_r($myAllUser);exit;
@@ -123,5 +128,9 @@ class IndexLoginController extends Controller
         $test->dbpwd=$userCheckPwd;
         print_r($test);exit;
 */
+    }
+
+    public function aboutMe(){
+        return view('login.aboutMePage');
     }
 }

@@ -13,6 +13,9 @@
 =======
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><!--css about font-awesome-->
 <link rel="stylesheet" href="css/flexslider.css" type="text/css">
+<<<<<<< HEAD
+>>>>>>> parent of c9a1a10... updateIndex
+=======
 >>>>>>> parent of c9a1a10... updateIndex
 <title>James's Category</title>
     </head>
@@ -41,6 +44,7 @@
                 </nav>
             </div>
         </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </div>
         </section>
@@ -82,6 +86,35 @@ scroller.init();
     
    $(function() {
 =======
+>>>>>>> parent of c9a1a10... updateIndex
+=======
+        <div style="" id="mainContainer">
+                <div style="margin-top:10%" class="">
+                        <h1 class="text-white text-center" style="font-size:50px;">Hi ! Please get more information from here to know me . </h1>
+                    </div>
+        </div>
+        <!--以下是list的畫面，應該放在商品資訊那頁-->
+        <!-- <div id="categoryAndImage" class="container " >
+            <div id="watchsCategory" class="col-3" style="margin-left:-12%;">
+                <ul class="list-group" style="">
+                        <li class="list-group-item list-group-item-dark ">Cras justo odio</li>
+                        <li class="list-group-item list-group-item-dark">Dapibus ac facilisis in</li>
+                        <li class="list-group-item list-group-item-dark">Morbi leo risus</li>
+                        <li class="list-group-item list-group-item-dark">Porta ac consectetur ac</li>
+                        <li class="list-group-item list-group-item-dark">Vestibulum at eros</li>
+                </ul>
+            </div>
+        </div> -->
+
+<script>
+
+    
+   $(function() {
+
+
+    
+    
+
 >>>>>>> parent of c9a1a10... updateIndex
     /*拿資料為主
     $('#logOutButton').click(function(){

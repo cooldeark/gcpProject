@@ -133,4 +133,8 @@ class IndexLoginController extends Controller
     public function aboutMe(){
         return view('login.aboutMePage');
     }
+
+    public function product(){
+        return view('login.productPage');
+    }
 }

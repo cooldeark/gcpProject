@@ -20,7 +20,7 @@ header {
   height: 100%;
   position: relative;
   overflow: hidden;
-  background: url('image/indexBackGround.jpg') center no-repeat;
+  background: url("image/indexBackGournd.jpg") center no-repeat;
   /* Image Credit: Unsplash.me */
   background-size: cover;
 }

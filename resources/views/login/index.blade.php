@@ -34,19 +34,19 @@
             </div>
         </div>
     </section>
-        <button id="test">test</button>
         
 
     
         
     <div id="mainContainer">
-
+            
     </div>    
 <script>
-//Based on the Scroller function from @sallar
-var $content = $('header .content')
-  , $blur    = $('header .overlay')
-  , wHeight  = $(window).height();
+
+//Based on the Scroller function from @sallar =>https://codepen.io/nodws/pen/ugFcC
+var myContent=$('header .content')
+var myBlur=$('header .overlay')
+var wHeight=$(window).height();
 
 $(window).on('resize', function(){
   wHeight = $(window).height();
@@ -72,7 +72,7 @@ Scroller.prototype = {
  
   init: function() {
     window.addEventListener('scroll', this.onScroll.bind(this), false);
-    $blur.css('background-image',$('header:first-of-type').css('background-image'));
+    myBlur.css('background-image',$('header:first-of-type').css('background-image'));
   },
 
 
@@ -102,23 +102,21 @@ Scroller.prototype = {
    else
      $('nav').css('position','absolute');
     
-    $content.css({
+    myContent.css({
       'transform'         : 'translateY(' + slowScroll + 'px)',
       '-moz-transform'    : 'translateY(' + slowScroll + 'px)',
       '-webkit-transform' : 'translateY(' + slowScroll + 'px)',
       'opacity' : opaScroll
     });
     
-    $blur.css({
+    myBlur.css({
       'opacity' : blurScroll / wHeight
     });
   }
 };
-
-
 var scroller = new Scroller();  
 scroller.init();
-////////////////////////////
+//end scroller
 
 
 

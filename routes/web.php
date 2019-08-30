@@ -18,10 +18,6 @@ Route::get('/logout','indexLoginController@logOut');
 Route::get('/register','indexLoginController@register');
 Route::post('/userRegist','indexLoginController@createUser');
 Route::get('/aboutMe','indexLoginController@aboutMe');
-Route::get('/product','indexLoginController@product');
-
-
-
 Route::get('/test',function(){
     return view('/welcome');
 });

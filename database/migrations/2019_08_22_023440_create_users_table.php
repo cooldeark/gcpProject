@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken('remember_token',100)->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->string('emailConfirm');
+            $table->string('md5Mail');
             //created 會自動建置 ，第二個stamp 是updated
         });
     }

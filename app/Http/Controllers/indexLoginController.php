@@ -28,7 +28,8 @@ class IndexLoginController extends Controller
             return redirect()->action('indexLoginController@loginSuccess');
         }else{
         $userEmail=$requests->userName;
-        $userPwd=$requests->userPwd;//自動會幫你hash不用自己來
+        $userPwd=$requests->userPwd;
+
         // $hashUserPwd=bcrypt($requests->userPwd);//這個是讓密碼加密
         // print_r($hashUserPwd);exit;
         // $userPwd=$requests->userPwd;
@@ -36,7 +37,7 @@ class IndexLoginController extends Controller
         // $test = bcrypt(Request::get('userPwd'));//這個是可以直接取得輸入的值
         $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
         $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
-        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){
+        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){//檢查的時候，密碼自動會幫你hash不用自己來
             return redirect()->action('indexLoginController@loginSuccess');
         }else if($userNameCheck){
             return Redirect::back()->withErrors(['PwdError'=>"密碼錯誤", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
@@ -100,6 +101,7 @@ class IndexLoginController extends Controller
     public function createUser(Request $request){
         $userName=$request->userName;
         $userMail=$request->userMail;
+        $userVerify=md5($userMail);
         $userPwd=bcrypt($request->userPwd);
         $checkUserExist=DB::table('users')->where('name',$userName)->first();
         $checkMailExist=DB::table('users')->where('email',$userMail)->first();
@@ -111,11 +113,24 @@ class IndexLoginController extends Controller
         }else if($checkMailExist){
             return Redirect::back()->withErrors(['alreadyExist'=>'信箱已註冊過，請更換']);
         }else{
+            //建立使用者
             $createUser=UserModel::create([
                 'name'=>$userName,
                 'email'=>$userMail,
-                'password'=>$userPwd
+                'password'=>$userPwd,
+                'md5Mail'=>$userVerify
             ]);
+
+            //send mail to verify userMail    
+            
+            $to      = $userMail;
+            $subject = 'YangMingLinWebConfirm';
+            $message = 'Hi , please click link under below:<br> https://www.yangminglin.tk/confirmEmail?userMail='.$userVerify;
+            $headers = 'From: cooldeark@gmail.com' . "\r\n" .
+                'Reply-To: cooldeark@gmail.com' . "\r\n" .
+                'X-Mailer: PHP/' . phpversion();
+            mail($to, $subject, $message, $headers);
+
         }
         
         
@@ -131,20 +146,16 @@ class IndexLoginController extends Controller
     }
 
     public function aboutMe(){
-        return view('login.aboutMePage');
+        if(Auth::check()){
+            return view('login.aboutMePage');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
     }
     public function product(){
         return view('login.productPage');
     }
 
-    public function sendEmail(){
-        $to      = 'cooldeark@gmail.com';
-        $subject = 'testMail';
-        $message = 'hello';
-        $headers = 'From: cooldeark@gmail.com' . "\r\n" .
-            'Reply-To: cooldeark@gmail.com' . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-        mail($to, $subject, $message, $headers);
-    }
+    
 }

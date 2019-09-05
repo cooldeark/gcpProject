@@ -125,7 +125,7 @@ class IndexLoginController extends Controller
             //PHP_EOL是換行
             $to      = $userMail;
             $subject = 'YangMingLinWebConfirm';
-            $message = 'Hi , please click link to verify your Account :'. PHP_EOL. ' https://www.yangminglin.tk/confirmEmail?userMail='.$userVerify. PHP_EOL. PHP_EOL.'Best Regards'. PHP_EOL.'JamesLin';
+            $message = 'Hi , please click link to verify your Account :'. PHP_EOL. ' https://www.yangminglin.tk/confirmEmail?userMail='.$userVerify. PHP_EOL.'Best Regards';
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
             $headers .='From: cooldeark@gmail.com' . "\r\n" .    

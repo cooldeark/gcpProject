@@ -29,27 +29,52 @@ class IndexLoginController extends Controller
         }else{
         $userEmail=$requests->userName;
         $userPwd=$requests->userPwd;
-
         // $hashUserPwd=bcrypt($requests->userPwd);//這個是讓密碼加密
         // print_r($hashUserPwd);exit;
         // $userPwd=$requests->userPwd;
         // print_r($userPwd);exit;
         // $test = bcrypt(Request::get('userPwd'));//這個是可以直接取得輸入的值
         $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
-        $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
-        $checkConfirmEmail=$userNameCheck->emailConfirm;
-        print_r($checkConfirmEmail);exit;
-        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd,'emailConfirm'=>$checkConfirmEmail])){//檢查的時候，密碼自動會幫你hash不用自己來
+        // $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();//因密碼hash過，這樣判斷不出來
+        if(isset($userNameCheck->emailConfirm)&&!empty($userNameCheck->emailConfirm)){
+            $checkConfirmEmail=$userNameCheck->emailConfirm;
+        }else{
+            $checkConfirmEmail='false';
+        }
+        // $checkConfirmEmail=$userNameCheck->emailConfirm;
+
+            /* //這裡會不能用是因為每次hash的密碼都不一樣
+        if(isset($userNameCheck)&&!empty($userNameCheck)&&isset($userPwdCheck)&&!empty($userPwdCheck)){
+            if($userNameCheck->password==$userPwdCheck->password &&$userNameCheck->email==$userPwdCheck->email){
+                if($checkConfirmEmail){
+                    if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){//檢查的時候，密碼自動會幫你hash不用自己來
+                        return redirect()->action('indexLoginController@loginSuccess');
+                    }
+                }else{
+                    return Redirect::back()->withErrors(['PwdError'=>"信箱尚未驗證"]);
+                }
+            }else if($userNameCheck){
+                return Redirect::back()->withErrors(['PwdError'=>"密碼錯誤"]);//如果要帶值回頁面提醒，這方式還是最快
+            }else if($userPwdCheck){
+                return Redirect::back()->withErrors(['PwdError'=>"此信箱不存在"]);//如果要帶值回頁面提醒，這方式還是最快
+            }
+        }else{
+            return Redirect::back()->withErrors(['PwdError'=>"信箱或是密碼錯誤"]);
+        }
+        */
+        
+        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd ,'emailConfirm'=>$checkConfirmEmail])){//檢查的時候，密碼自動會幫你hash不用自己來
             return redirect()->action('indexLoginController@loginSuccess');
-        }else if($userNameCheck){
-            return Redirect::back()->withErrors(['PwdError'=>"密碼錯誤", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
-        }else if($userPwdCheck){
+        }else if(!isset($userNameCheck)&&empty($userNameCheck)){
             return Redirect::back()->withErrors(['PwdError'=>"此信箱不存在", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
-        }else if($checkConfirmEmail){
+        }else if($checkConfirmEmail=='false'){
             return Redirect::back()->withErrors(['PwdError'=>"信箱尚未驗證", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
         }else{
-            return Redirect::back()->withErrors(['PwdError'=>"無此使用者", 'Shit'=>"fuck"]);
+            return Redirect::back()->withErrors(['PwdError'=>"密碼或信箱錯誤", 'Shit'=>"fuck"]);
         }
+        
+
+
         // $myAllUser=new UserModel();
         // print_r($myAllUser);exit;
         /*

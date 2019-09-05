@@ -125,7 +125,7 @@ class IndexLoginController extends Controller
             
             $to      = $userMail;
             $subject = 'YangMingLinWebConfirm';
-            $message = 'Hi , please click link under below:<br> https://www.yangminglin.tk/confirmEmail?userMail='.$userVerify;
+            $message = 'Hi , please click link to verify your Account'. PHP_EOL. ': https://www.yangminglin.tk/confirmEmail?userMail='.$userVerify. PHP_EOL.'Best Regards'. PHP_EOL.'JamesLin';
             $headers = 'From: cooldeark@gmail.com' . "\r\n" .
                 'Reply-To: cooldeark@gmail.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();

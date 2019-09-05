@@ -19,6 +19,9 @@ Route::get('/register','indexLoginController@register');
 Route::post('/userRegist','indexLoginController@createUser');
 Route::get('/aboutMe','indexLoginController@aboutMe');
 Route::get('/product','indexLoginController@product');
+Route::get('/errorPage','errorHandleController@errorPage');
+Route::get('/sendEmail','indexLoginController@sendEmail');
+
 Route::get('/test',function(){
     return view('/welcome');
 });

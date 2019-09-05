@@ -10,18 +10,25 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><!--css about font-awesome-->
 
 <title>James's Category</title>
+<style>
+.font{
+  font-family:Tahoma;
+}
+</style>
 </head>
 <body style="">
-    <header>
-        <div class="content">
+    <a id="directmainContainer" href="#mainContainer" style="display:none;">mainContainer</a>
+    <a id="directheaderContainer" href="#headerContainer" style="display:none;">headerContainer</a>
+    <header id="headerContainer">
+        <div class="content" id="myhead">
             <hgroup>
             <h1>Hi ! I'm James.</h1>
-            <i>Know Me More</i>
+            <i>Scroll Down To Know Me More</i>
             </hgroup>
         </div>
         <div class="overlay"></div>
     </header>
-    <section class="site">
+    <section class="site" style="height:100%;overflow:auto;" id="MyMainContainer">
         <div id="headerContainer" class="container"><!--container is 置中-->
             <div class="nav-scroller py-1 mb-2">
                 <nav  class="nav justify-content-between">
@@ -33,15 +40,47 @@
                 </nav>
             </div>
         </div>
+        <div id="mainContainer" class="">
+          <h1 style="font-size: 70px;" class="col-md-12">I love Programing</h1>
+          <h3  class="col-md-12 mt-md-4"><!--m is margin t is top -->
+            When I'm coding , that's make me enjoy all the time,<br>
+            In program language which is good at to used were under below.<br><br>
+            <b  style="font-size: 50px;"> I'm good at  </b> <br><br>
+            <b>Framework : </b>
+            Yii , Laravel , NWDS<br><br>
+            <b>Language : </b>
+            Sapui5 , Javascript , Jquey , Html , Css , PHP , SQL<br>
+            
+          </h3>
+        </div> 
     </section>
         
 
     
         
-    <div id="mainContainer">
-            
-    </div>    
+       
 <script>
+$(function(){
+  $(window).scroll(function(){
+    //這裡想要做滾動優化，可是還在看要怎做
+    // console.log($("#directmainContainer").attr('href'));
+  
+  var s = $(window).scrollTop(),
+      d = $(document).height(),
+      c = $(window).height();
+
+  var scrollPercent = Math.floor((s / (d - c)) * 100);
+    // if(scrollPercent>=90){
+    //   $('#directmainContainer')[0].click();//這裡一定要加上[0]不然抓不到
+    // }
+    // else if(scrollPercent<=10){
+    //   $('#directheaderContainer')[0].click();//這裡一定要加上[0]不然抓不到
+    // }
+
+  // console.clear();
+  // console.log(scrollPercent);
+});
+});
 
 //Based on the Scroller function from @sallar =>https://codepen.io/nodws/pen/ugFcC
 var myContent=$('header .content')

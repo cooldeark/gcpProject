@@ -136,4 +136,15 @@ class IndexLoginController extends Controller
     public function product(){
         return view('login.productPage');
     }
+
+    public function sendEmail(){
+        $to      = 'cooldeark@gmail.com';
+        $subject = 'testMail';
+        $message = 'hello';
+        $headers = 'From: cooldeark@gmail.com' . "\r\n" .
+            'Reply-To: cooldeark@gmail.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+    }
 }

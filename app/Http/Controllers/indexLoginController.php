@@ -37,12 +37,15 @@ class IndexLoginController extends Controller
         // $test = bcrypt(Request::get('userPwd'));//這個是可以直接取得輸入的值
         $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
         $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
-        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd])){//檢查的時候，密碼自動會幫你hash不用自己來
+        $checkConfirmEmail=$userNameCheck->emailConfirm;
+        if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd,'emailConfirm'=>$checkConfirmEmail])){//檢查的時候，密碼自動會幫你hash不用自己來
             return redirect()->action('indexLoginController@loginSuccess');
         }else if($userNameCheck){
             return Redirect::back()->withErrors(['PwdError'=>"密碼錯誤", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
         }else if($userPwdCheck){
             return Redirect::back()->withErrors(['PwdError'=>"此信箱不存在", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
+        }else if($checkConfirmEmail){
+            return Redirect::back()->withErrors(['PwdError'=>"信箱尚未驗證", 'Shit'=>"fuck"]);//如果要帶值回頁面提醒，這方式還是最快
         }else{
             return Redirect::back()->withErrors(['PwdError'=>"無此使用者", 'Shit'=>"fuck"]);
         }

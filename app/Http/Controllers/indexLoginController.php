@@ -38,6 +38,7 @@ class IndexLoginController extends Controller
         $userNameCheck=DB::table('users')->where('email',$userEmail)->first();
         $userPwdCheck=DB::table('users')->where('password',$userPwd)->first();
         $checkConfirmEmail=$userNameCheck->emailConfirm;
+        print_r($checkConfirmEmail);exit;
         if(Auth::attempt(['email' => $userEmail, 'password' => $userPwd,'emailConfirm'=>$checkConfirmEmail])){//檢查的時候，密碼自動會幫你hash不用自己來
             return redirect()->action('indexLoginController@loginSuccess');
         }else if($userNameCheck){

@@ -108,13 +108,11 @@ $('#submitBtn').click(function(){
 });
 
 $('#registerBtn').click(function(){
-    <script>
   cft('send', 'event', {
     action: 'JamesTestInHome',    // 事件動作
     category: 'youHappy',    // 事件類別
     label: 'HappyTag',    // 事件標籤
   });
-</script>
 });
 
 

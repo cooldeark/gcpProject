@@ -8,6 +8,16 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}" >
 <title>WelComeToMyWorld</title>
+<!--ClickForce trace code-->
+<script async src='https://cdn.doublemax.net/dmp/cft/tracker.js'></script>
+  <script>
+    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+    cft('setSiteId', 'CF-180700000187');
+    cft('setEnableCookie');
+    cft('setViewPercentage');
+    cft('setTPCookie');
+  </script>
+  <!--ClickForce trace code-->
 </head>
 <body style="background-color:#4D4D4F;"><!--back groundcolor-->
 <div  class="container">
@@ -96,6 +106,18 @@ $('#submitBtn').click(function(){
 
     
 });
+
+$('#registerBtn').click(function(){
+    <script>
+  cft('send', 'event', {
+    action: 'JamesTestInHome',    // 事件動作
+    category: 'youHappy',    // 事件類別
+    label: 'HappyTag',    // 事件標籤
+  });
+</script>
+});
+
+
 </script>
 </html>
 <!--laravel php call method-->

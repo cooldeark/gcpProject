@@ -22,13 +22,13 @@
 <body style="background-color:#4D4D4F;"><!--back groundcolor-->
 <div  class="container">
     <div class="wrapper fadeInDown mx-auto" >
-        <div  class="section" style="margin-top:25%;">
+        <div  class="section" style="margin-top:20%;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card text-center" style="background-color:#4D4D4F;">
                         <div class="">
-                            <div class="fadeInDown">
-                                <img src="{{asset('image/logo.png')}}" alt="loginIco" />
+                            <div class="fadeInDown  p-4"><!--p-3是bootstrap padding -->
+                                <img src="{{asset('image/005.jpg')}}" alt="loginIco" />
                             </div>
                         <div class="card-block">
                             <form name="loginInput" action="/checkAuth" method="POST" aria-required=""><!--action 指定你的route-->

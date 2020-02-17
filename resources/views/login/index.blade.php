@@ -49,7 +49,7 @@
             <b>Framework : </b>
             Yii , Laravel , NWDS<br><br>
             <b>Language : </b>
-            Sapui5 , Javascript , Jquey , Html , Css , PHP , SQL<br>
+            Sapui5 , Javascript , Jquey , Html , Css , PHP , SQL , RegExp<br>
             
           </h3>
         </div> 

@@ -35,7 +35,7 @@
                                 {{csrf_field()}}<!--if u post , must have this-->
                             <div class="form-group">
                                 <input type="text" id="loginAccount" class=" form-control fadeInDown" name="userName" placeholder="UserEmail"/>
-                                <input type="text" style="-webkit-text-security: disc;" id="password" class="  form-control fadeInDown"  name="userPwd" placeholder="UserPassword"/><!--style is gonna make input like password-->
+                                <input autocomplete="off" type="text" style="-webkit-text-security: disc;" id="password" class="form-control fadeInDown"  name="userPwd" placeholder="UserPassword"/><!--style is gonna make input like password,autocomplete="off"可以讓輸入框不紀錄輸入過的值-->
                                 <input type="submit" class="fadeInDown" id="submitBtn" value="登入" onclick="return false"/>
                                 <a id="registerBtn" class="fadeInDown" href="{{url('/register')}}" style="cursor:auto;">註冊</a>
                                 <div id="emailError" style="display:none;color:red;"><b>Email format not correct!</b></div>

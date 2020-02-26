@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+       var e = {};
+    document.cookie.split(";").forEach(function(a) {
+        a = a.split("=");
+        e[a[0].trim()] = (a[1] || "").trim()
+    });
+    "P" in e &&parent.postMessage({cf_P:e.P, pathname: location.pathname},'*');
+</script>
+</body>
+</html>

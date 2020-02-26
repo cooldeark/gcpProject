@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="{{asset('js/james-tracker-compile.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -9,13 +10,14 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/login.css') }}" >
 <title>WelComeToMyWorld</title>
 <!--ClickForce trace code-->
-<script async src='https://cdn.doublemax.net/dmp/cft/tracker.js'></script>
+<!-- <script async src='https://cdn.doublemax.net/dmp/cft/tracker.js'></script> -->
   <script>
     window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
     cft('setSiteId', 'CF-180700000187');
     cft('setEnableCookie');
     cft('setViewPercentage');
     cft('setTPCookie');
+    console.log("test");
   </script>
   <!--ClickForce trace code-->
 </head>

@@ -1807,7 +1807,7 @@
 
                         window.addEventListener('message',function cfGetP(d){//iframe 內外呼叫的message
                             var i=d.origin,o=d.data;
-                            'https://cdn.homesmind.com' === i && o.constructor === Object && '/js/getP.htm' === o.pathname && (window.removeEventListener('message',cfGetP),
+                            'https://www.yangminglin.tk/' === i && o.constructor === Object && '/js/getP.htm' === o.pathname && (window.removeEventListener('message',cfGetP),
                                 setTPUid(o.cf_P),
                                 cftcookie('_P', o.cf_P, {
                                     domain: stripWwwFromDomain(pageInfo.getHostName()),

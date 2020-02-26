@@ -1627,7 +1627,7 @@
              */
             function Tracker(siteId) {
                 var sID = siteId || "",
-                    trackerServer = 'https://pikachu.holmesmind.com/pixel.png',
+                    trackerServer = 'https://pikachu.holmesmind.com/pixel.png',//發送imgCall的地方，存進哪個loadbalance裡面，這裡要先去loadbalancet處理好domain才可以這樣發
                     appliedMethods = {},
                     cft_uid = '',
                     _cf_P='',

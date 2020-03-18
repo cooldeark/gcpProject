@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="{{asset('js/james-tracker-compile.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -37,6 +38,20 @@ color: #222; }
 .formInput:focus:-moz-placeholder {
 color: #222; }
 </style> 
+<script>
+    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+    cft('setSiteId', 'JamesWebSite');
+    cft('setEnableCookie');
+    cft('setViewPercentage');
+    cft('setTPCookie');
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'registerPage',
+    category: '',
+    label: '',
+  });
+    console.log("cookie test");
+  </script>
+
 </head>
 <body style="background-color:#4D4D4F;">
     <div id="mainContainer" class="container">
@@ -78,6 +93,11 @@ color: #222; }
 <script>
     var checkName=false,checkMail=false,checkPwd=false,checkDBPwd=false,checkPwdSame=false;
 $('.btn-primary').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'registerPageClickRegisterBtn',
+    category: '',
+    label: '',
+    });
     // var userNameInput=$("input[name='userName']").val();//use name to get value
     var userNameInput=$('#userInputName').val();
     var userMailInput=$('#userInputMail').val();

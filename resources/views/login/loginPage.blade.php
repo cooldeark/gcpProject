@@ -11,17 +11,18 @@
 <title>WelComeToMyWorld</title>
 <!--ClickForce trace code-->
 <!-- <script async src='https://cdn.doublemax.net/dmp/cft/tracker.js'></script> -->
-  <script>
-    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-    cft('setSiteId', 'CF-180700000187');
-    cft('setEnableCookie');
-    cft('setViewPercentage');
-    cft('setTPCookie');
-    console.log("test");
-  </script>
+
   <!--ClickForce trace code-->
 </head>
 <body style="background-color:#4D4D4F;"><!--back groundcolor-->
+  <script>
+    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+    cft('setSiteId', 'JamesWebSite');
+    cft('setEnableCookie');
+    cft('setViewPercentage');
+    cft('setTPCookie');
+    console.log("cookie test");
+  </script>
 <div  class="container">
     <div class="wrapper fadeInDown mx-auto" >
         <div  class="section" style="margin-top:20%;">
@@ -61,6 +62,11 @@
 </body>
 <script>
 $('#submitBtn').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickLoginBtn',
+    category: '',
+    label: '',
+  });
     var myInputMail=$("input[name='userName']").val();
     var myInputPwd=$("input[name='userPwd']").val();
     var checkValid= new RegExp(".*\\@\\w{0,10}\\.\\w{0,10}\\.\\w{0,6}");//這裡有重點，在javascript裡面，原本正規表達式長這樣 .*\@\w{0,10}\.\w{0,10}\.\w{0,6}  ，因為javascript\要多加一條，所以都加上多一條就沒事惹
@@ -110,10 +116,15 @@ $('#submitBtn').click(function(){
 });
 
 $('#registerBtn').click(function(){
-  cft('send', 'event', {
-    action: 'JamesTestInHome',    // 事件動作
-    category: 'youHappy',    // 事件類別
-    label: 'HappyTag',    // 事件標籤
+//   cft('send', 'event', {
+//     action: 'JamesTestInHome',    // 事件動作
+//     category: 'youHappy',    // 事件類別
+//     label: 'HappyTag',    // 事件標籤
+//   });
+  cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickRegisterBtn',
+    category: '',
+    label: '',
   });
 });
 

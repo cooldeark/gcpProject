@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+  <script src="{{asset('js/james-tracker-compile.js')}}"></script>
 <link rel="stylesheet" href="css/index.css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -15,6 +16,19 @@
   font-family:Tahoma;
 }
 </style>
+<script>
+  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+  cft('setSiteId', 'JamesWebSite');
+  cft('setEnableCookie');
+  cft('setViewPercentage');
+  cft('setTPCookie');
+  console.log("cookie test");
+  cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'loginSuccess',
+    category: '',
+    label: '',
+  });
+</script>
 </head>
 <body style="">
     <a id="directmainContainer" href="#mainContainer" style="display:none;">mainContainer</a>
@@ -60,6 +74,43 @@
         
        
 <script>
+  $('.fa-home').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'returnMainPage',
+    category: '',
+    label: '',
+  });
+  });
+
+  $('.fa-address-card').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickAboutMe',
+    category: '',
+    label: '',
+  });
+  });
+$('.fa-list-alt').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickProduct',
+    category: '',
+    label: '',
+  });
+  });
+
+  $('.fa-child').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickContactMe',
+    category: '',
+    label: '',
+  });
+  });
+  $('.fa-blind').click(function(){
+    cft('send', 'event', {//自己分析自己ㄎㄎ
+    action: 'clickLogOut',
+    category: '',
+    label: '',
+  });
+  });
 $(function(){
   $(window).scroll(function(){
     //這裡想要做滾動優化，可是還在看要怎做

@@ -22,6 +22,8 @@ Route::get('/product','indexLoginController@product');
 Route::get('/errorPage','errorHandleController@errorPage');
 Route::get('/confirmEmail','emailController@confirmEmail');
 
+Route::get('/testEmail','indexLoginController@testEmail');
+
 Route::get('/test',function(){
     return view('/welcome');
 });

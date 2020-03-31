@@ -8,7 +8,7 @@ use DB;//need import this to use DB::
 use Illuminate\Http\Request;//這個是用在Request $requests
 use App\UserModel;//你要使用的model
 use Redirect;//要用Redirect back 要import這個
-
+use Mail;//要寄信要記得
 
 class IndexLoginController extends Controller
 {
@@ -131,7 +131,7 @@ class IndexLoginController extends Controller
         $userName=$request->userName;
         $userMail=$request->userMail;
         $userVerify=md5($userMail);
-        $userPwd=bcrypt($request->userPwd);
+        $userPwd=bcrypt($request->userPwd);//加密
         $checkUserExist=DB::table('users')->where('name',$userName)->first();
         $checkMailExist=DB::table('users')->where('email',$userMail)->first();
         // $userCheckPwd=$request->userCheckPwd;
@@ -186,6 +186,17 @@ class IndexLoginController extends Controller
     }
     public function product(){
         return view('login.productPage');
+    }
+
+
+
+    public function testEmail(){
+        $message = "Hi , please click link to verify your Account :".PHP_EOL." https://www.yangminglin.tk/confirmEmail?userMail=".PHP_EOL.PHP_EOL."Best Regards".PHP_EOL."JamesLin";
+        $data=['tel'=>'12345678'];
+        Mail::send('login.post',$data, function($message)
+        {
+            $message->to('cooldeark@gmail.com', 'fuck')->subject('Welcome!');
+        });
     }
 
     

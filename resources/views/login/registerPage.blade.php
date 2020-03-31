@@ -183,7 +183,7 @@ $('.btn-primary').click(function(){
         }
     }
     if(checkName&&checkMail&&checkPwd&&checkDBPwd&&checkPwdSame==true){
-        document.registerFormData.submit();
+        document.registerFormData.submit();//submit 在63行有指定router位置
     }
     });
 

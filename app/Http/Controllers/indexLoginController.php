@@ -136,7 +136,8 @@ class IndexLoginController extends Controller
         $userName=$request->userName;
         $userMail=$request->userMail;
         $userVerify=md5($userMail);
-        //test
+        //test sendemail
+        /*
         $to = collect([
             ['name' => $userName, 'email' => $userMail]
         ]);
@@ -146,7 +147,8 @@ class IndexLoginController extends Controller
             //下方是可以塞給我們sendMail這個class的value
             Mail::to($to)->send(new sendMail($sendMailParams));
             return view('login.loginPage');
-        //test
+            */
+        //test sendEmail
         $userPwd=bcrypt($request->userPwd);//加密
         $checkUserExist=DB::table('users')->where('name',$userName)->first();
         $checkMailExist=DB::table('users')->where('email',$userMail)->first();

@@ -135,7 +135,18 @@ class IndexLoginController extends Controller
     public function createUser(Request $request){
         $userName=$request->userName;
         $userMail=$request->userMail;
-        $userVerify="https://www.yangminglin.tk/confirmEmail?userMail=".md5($userMail);
+        $userVerify=md5($userMail);
+        //test
+        $to = collect([
+            ['name' => $userName, 'email' => $userMail]
+        ]);
+        $sendMailParams=array();
+            $emailVerify="https://www.yangminglin.tk/confirmEmail?userMail=".$userVerify;
+            $sendMailParams=['userVerify'=>$emailVerify];
+            //下方是可以塞給我們sendMail這個class的value
+            Mail::to($to)->send(new sendMail($sendMailParams));
+            return view('login.loginPage');
+        //test
         $userPwd=bcrypt($request->userPwd);//加密
         $checkUserExist=DB::table('users')->where('name',$userName)->first();
         $checkMailExist=DB::table('users')->where('email',$userMail)->first();
@@ -172,7 +183,8 @@ class IndexLoginController extends Controller
             
             //整理我們要給予sendMail 的 value
             $sendMailParams=array();
-            $sendMailParams=['userVerify'=>$userVerify];
+            $emailVerify="https://www.yangminglin.tk/confirmEmail?userMail=".$userVerify;
+            $sendMailParams=['userVerify'=>$emailVerify];
             //下方是可以塞給我們sendMail這個class的value
             Mail::to($to)->send(new sendMail($sendMailParams));
             return view('login.loginPage');

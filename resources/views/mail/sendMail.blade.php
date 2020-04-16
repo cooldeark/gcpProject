@@ -3,9 +3,7 @@
 </p>
 <input style="width:70%;" value="{{ $params['userVerify'] }}"/>
 <p>
-    If you have any question please contact with : <br>
-    cooldeark@gmail.com<br>
-    thanks.
+    If you have any questions please contact us with this email , thanks.
 </p>
 <p>
     Best Regards

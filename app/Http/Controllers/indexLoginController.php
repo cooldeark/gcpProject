@@ -17,14 +17,20 @@ use App\Mail\sendMail;//是寄信的檔案自己建立的
 
 class IndexLoginController extends Controller
 {
-    public function loginPage(){
-        if(Auth::check()){//判斷你是否有登入，如果有登入是回不到登入頁面的
-            // print_r("true");exit;
-            return redirect()->action('indexLoginController@loginSuccess');
+    public function loginPage(Request $request){
+        // dd($request->check);
+        if(isset($request->check)){
+            return view('login.loginPage',['check'=>'true']);
         }else{
-            // print_r("false");exit;
-            return view('login.loginPage');
+            if(Auth::check()){//判斷你是否有登入，如果有登入是回不到登入頁面的
+                // print_r("true");exit;
+                return redirect()->action('indexLoginController@loginSuccess');
+            }else{
+                // print_r("false");exit;
+                return view('login.loginPage');
+            }
         }
+        
         
     }
 
@@ -189,7 +195,8 @@ class IndexLoginController extends Controller
             $sendMailParams=['userVerify'=>$emailVerify];
             //下方是可以塞給我們sendMail這個class的value
             Mail::to($to)->send(new sendMail($sendMailParams));
-            return view('login.loginPage');
+            // return view('login.loginPage');
+            return Redirect::back()->withErrors(['alreadyExist'=>'驗證信已發送至您註冊信箱']);
             //新版寄信，經由laravel end
             
 

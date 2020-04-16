@@ -12,6 +12,7 @@ class SendMailController extends Controller
 {
     public function send()
     {
+        //這裡已經被棄用了，因為只要有sendMail.php就可以在各個地方調用
         // 收件者務必使用 collect 指定二維陣列，每個項目務必包含 "name", "email"
         $to = collect([
             ['name' => '註冊者', 'email' => 'cooldeark@gmail.com']

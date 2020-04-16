@@ -47,6 +47,9 @@
                                 <?php if($errors->any()):?>
                                 <div id="backReturnBack" style="color:red;"><b>{{$errors->first("PwdError")}}</b></div><!--這裡是跟Redirect function做呼應-->
                                 <?php endif ?>
+                                <?php if(isset($check)):?>
+                                <div style="color:red;">驗證成功</div>
+                                <?php endif?>
                             </div>
                             
                             </form>

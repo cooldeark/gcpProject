@@ -21,7 +21,7 @@ Route::get('/aboutMe','indexLoginController@aboutMe');
 Route::get('/product','indexLoginController@product');
 Route::get('/errorPage','errorHandleController@errorPage');
 Route::get('/confirmEmail','emailController@confirmEmail');
-
+// Route::get('/verifyEmail','indexLoginController@verifyLoginPage');//就算是自己內部導，還是要在這裡建置get的route
 Route::get('/sendMail','SendMailController@send');
 
 

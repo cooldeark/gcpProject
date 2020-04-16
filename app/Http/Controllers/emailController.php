@@ -16,6 +16,6 @@ class emailController extends Controller
                 'emailConfirm'=>'true'
             ));
         }
-        return redirect()->action('indexLoginController@loginPage');
+        return redirect()->action('indexLoginController@loginPage',['check'=>'true']);
     }
 }

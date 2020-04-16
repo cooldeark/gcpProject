@@ -193,7 +193,7 @@ class IndexLoginController extends Controller
             $sendMailParams=array();
             $emailVerify="https://www.yangminglin.tk/confirmEmail?userMail=".$userVerify;
             $sendMailParams=['userVerify'=>$emailVerify];
-            //下方是可以塞給我們sendMail這個class的value
+            //下方是可以塞給我們sendMail這個class的value，$sendMailParams會是sendMail.php__construct的帶入參數
             Mail::to($to)->send(new sendMail($sendMailParams));
             // return view('login.loginPage');
             return Redirect::back()->withErrors(['alreadyExist'=>'驗證信已發送至您註冊信箱']);

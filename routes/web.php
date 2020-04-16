@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/testBigquery','bigQueryController@searchTableData');
+Route::get('/testBigquery','bigQueryController@saveSearchTable');
 Route::get('/','indexLoginController@loginPage');
 Route::post('/checkAuth','indexLoginController@checkAuth');
 Route::get('/index','indexLoginController@loginSuccess');
@@ -21,6 +21,9 @@ Route::get('/aboutMe','indexLoginController@aboutMe');
 Route::get('/product','indexLoginController@product');
 Route::get('/errorPage','errorHandleController@errorPage');
 Route::get('/confirmEmail','emailController@confirmEmail');
+
+Route::get('/sendMail','SendMailController@send');
+
 
 Route::get('/testEmail','indexLoginController@testEmail');
 

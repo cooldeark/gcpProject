@@ -31,7 +31,15 @@ return [
 
     // 'host' => env('MAIL_HOST', 'smtp.mailgun.org'),//original 
     'host' => env('MAIL_HOST', 'smtp.gmail.com'),
-
+    //fix sendmail issue
+    'stream' => [
+        'ssl' => [
+           'allow_self_signed' => true,
+           'verify_peer' => false,
+           'verify_peer_name' => false,
+        ],
+     ],
+     //fix sendmail issue , then you have to clear cache =>php artisan config:cache
     /*
     |--------------------------------------------------------------------------
     | SMTP Host Port

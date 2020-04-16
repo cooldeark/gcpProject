@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 use Google\Cloud\BigQuery\BigQueryClient;
 use Google\Cloud\Core\ExponentialBackoff;
 use Google\Cloud\Core\ServiceBuilder;
-putenv("GOOGLE_APPLICATION_CREDENTIALS=glowing-anagram-272708-a415c9f0bf6b.json");
+putenv("GOOGLE_APPLICATION_CREDENTIALS=mesmerizing-bee-273409-0b1b453c26f1.json");
 class bigQueryController extends Controller
 {
     function saveSearchTable(){
         $isComplete=false;
         // $project=new ServiceBuilder([
-        //     'projectId' => 'glowing-anagram-272708',
+        //     'projectId' => 'mesmerizing-bee-273409',
         // ]);
         $bigquery= new BigQueryClient([
-            'projectId'=>'glowing-anagram-272708'
+            'projectId'=>'mesmerizing-bee-273409'
         ]);
-        $saveTable=$bigquery->dataset('myweb_daily_log')->table('daily_log_20200302');
+        $saveTable=$bigquery->dataset('james_profile_daily_log')->table('daily_log_20200407');
         $myQuery=sprintf("
-        SELECT * FROM `glowing-anagram-272708.myweb_daily_log.daily_log_20200226` ;
+        SELECT * FROM `mesmerizing-bee-273409.james_profile_daily_log.daily_log_20200413` ;
         ");
 
         $QueryJobConfiguration = $bigquery
@@ -44,10 +44,10 @@ class bigQueryController extends Controller
     function searchTableData(){
         $isComplete=false;
         $bigquery= new BigQueryClient([
-            'projectId'=>'glowing-anagram-272708'
+            'projectId'=>'mesmerizing-bee-273409'
         ]);
         $myQuery=sprintf("
-        SELECT * FROM `glowing-anagram-272708.myweb_daily_log.daily_log_20200317`;
+        SELECT * FROM `mesmerizing-bee-273409.james_profile_daily_log.daily_log_20200413`;
         ");
             $QueryJobConfiguration=$bigquery->query($myQuery);
             $result=$bigquery->startQuery($QueryJobConfiguration);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- 判斷螢幕大小-->
 <script src="{{asset('js/james-tracker-compile.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -84,15 +85,29 @@ color: #222; }
                 <label class="col-form-label" style="display:none;color:red;margin-left:5%;" id="userPwdDBCheck"></label>
             </div>
             </div>
-            <div class="text-center"><!--可以用這招讓不是text也能置中什麼的-->
-                <button style="margin-left:45%;padding:1% 2% 1% 2%;" class="btn btn-primary" type="submit" onclick="return false">送出</button>
+            <div class="row">
+                <button  class="btn btn-primary   mx-md-5 col-md-2" id="cancelBtn" type="button"  onclick="return false">取消</button><!--這裡記得，如果你沒有給button type 你按下enter他會直接觸發取消按鈕-->
+                <button  class="btn btn-primary   mx-md-5 col-md-2" id="submitBtn" type="submit" onclick="return false">送出</button>
             </div>
         </form>
         </div>
     </div>
 <script>
     var checkName=false,checkMail=false,checkPwd=false,checkDBPwd=false,checkPwdSame=false;
-$('.btn-primary').click(function(){
+    var enterCode;
+    //原生javascript 監聽用，監聽有分 document or window，這裡我們document就好
+    document.addEventListener("keydown",function(event){
+        // console.log(event.code);
+        // if(event.code=='Enter'){
+        //     alert('fuck');
+        // }
+    });
+
+
+
+
+
+$('#submitBtn').click(function(){
     cft('send', 'event', {//自己分析自己ㄎㄎ
     action: 'registerPageClickRegisterBtn',
     category: '',
@@ -187,6 +202,23 @@ $('.btn-primary').click(function(){
     }
     });
 
+    $('#cancelBtn').click(function(){
+        //此為ajax，是從後端拿值，好像不太能導頁
+        // $.ajax({
+        //     url:"/register",
+        //     data:{fuck:'123'},
+        //     type:'GET',
+        //     dataType:'json',
+        //     success:function(){
+        //         console.log('test');
+        //     }
+        // }).fail(function(){
+
+        // });
+        window.location.href="{{url('/')}}";//這就是導頁了
+    });
+        
+    
 </script>
 </body>
 </html>

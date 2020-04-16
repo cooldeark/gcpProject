@@ -8,7 +8,12 @@ use DB;//need import this to use DB::
 use Illuminate\Http\Request;//這個是用在Request $requests
 use App\UserModel;//你要使用的model
 use Redirect;//要用Redirect back 要import這個
-use Mail;//要寄信要記得
+// use Mail;//要寄信要記得，有下面那個Facades\mail就不用這個
+
+//下面兩行是laravel寄信的咚咚
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendMail;//是寄信的檔案自己建立的
+
 
 class IndexLoginController extends Controller
 {
@@ -130,7 +135,7 @@ class IndexLoginController extends Controller
     public function createUser(Request $request){
         $userName=$request->userName;
         $userMail=$request->userMail;
-        $userVerify=md5($userMail);
+        $userVerify="https://www.yangminglin.tk/confirmEmail?userMail=".md5($userMail);
         $userPwd=bcrypt($request->userPwd);//加密
         $checkUserExist=DB::table('users')->where('name',$userName)->first();
         $checkMailExist=DB::table('users')->where('email',$userMail)->first();
@@ -149,9 +154,35 @@ class IndexLoginController extends Controller
                 'password'=>$userPwd,
                 'md5Mail'=>$userVerify
             ]);
+            //新版寄信，經由laravel start
 
+            // 收件者務必使用 collect 指定二維陣列，每個項目務必包含 "name", "email"
+            $to = collect([
+                ['name' => $userName, 'email' => $userMail]
+            ]);
+    
+            // 提供給模板的參數，現在這裡的$params是不會有作用的
+            /*
+            $params = [
+                'fuck' => '您好，這是一段測試訊息的內容'
+            ];
+            */
+            // 若要直接檢視模板
+            // echo (new Warning($data))->render();die;
+            
+            //整理我們要給予sendMail 的 value
+            $sendMailParams=array();
+            $sendMailParams=['userVerify'=>$userVerify];
+            //下方是可以塞給我們sendMail這個class的value
+            Mail::to($to)->send(new sendMail($sendMailParams));
+            return view('login.loginPage');
+            //新版寄信，經由laravel end
+            
+
+            //此為原生PHP寄信，但是會遇到不安全警告
             //send mail to verify userMail    
             //PHP_EOL是換行
+            /*
             $to      = $userMail;
             $subject = 'YangMingLinWebConfirm';
             $message = "Hi , please click link to verify your Account :".PHP_EOL." https://www.yangminglin.tk/confirmEmail?userMail=".$userVerify.PHP_EOL.PHP_EOL."Best Regards".PHP_EOL."JamesLin";
@@ -161,6 +192,7 @@ class IndexLoginController extends Controller
                 'Reply-To: cooldeark@gmail.com' . "\r\n" .
                 'X-Mailer: PHP/' . phpversion();
             mail($to, $subject, $message, $headers);
+            */
 
         }
         

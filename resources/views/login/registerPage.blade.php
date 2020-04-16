@@ -66,22 +66,22 @@ color: #222; }
             <div style="margin-top:2%;margin-right:2%;">
             <div class="form-group row">
                 <label class=" col-sm-2 col-form-label"><i class="fa fa-user"></i> 使用者名稱 : </label><!--col-form-label 是讓字串跟input一樣置中-->
-                <input class="form-control col-sm-6  formInput" type="text" name="userName" id="userInputName" placeholder="your name" style="" required/>
+                <input autocomplete="off" class="form-control col-sm-6  formInput" type="text" name="userName" id="userInputName" placeholder="your name" style="" required/>
                 <label class="col-form-label" style="display:none;color:red;margin-left:5%;" id="userNameCheck"></label>
             </div>
             <div class="form-group row">
                 <label class=" col-sm-2 col-form-label"><i class="fa fa-envelope"></i> 信箱 : </label>
-                <input class="form-control col-sm-6  formInput" type="text" name="userMail" id="userInputMail" placeholder="mail address" style="" required/>
+                <input autocomplete="off" class="form-control col-sm-6  formInput" type="text" name="userMail" id="userInputMail" placeholder="mail address" style="" required/>
                 <label class="col-form-label" style="display:none;color:red;margin-left:5%;" id="userMailCheck"></label>
             </div>
             <div class="form-group row">
                 <label class=" col-sm-2 col-form-label"><i class="fa fa-key"></i> 密碼 : </label>
-                <input class="form-control col-sm-6  formInput" type="password" name="userPwd" id="userInputPwd" placeholder="password" style="" required/>
+                <input autocomplete="off" class="form-control col-sm-6  formInput" type="password" name="userPwd" id="userInputPwd" placeholder="password" style="" required/>
                 <label class="col-form-label" style="display:none;color:red;margin-left:5%;" id="userPwdCheck"></label>
             </div>
             <div class="form-group row">
                 <label class=" col-sm-2 col-form-label"><i class="fa fa-key"></i> 確認密碼 : </label>
-                <input class="form-control col-sm-6  formInput" type="password" name="userCheckPwd" id="userInputCheckPwd" placeholder="password" style="" required/>
+                <input autocomplete="off" class="form-control col-sm-6  formInput" type="password" name="userCheckPwd" id="userInputCheckPwd" placeholder="password" style="" required/>
                 <label class="col-form-label" style="display:none;color:red;margin-left:5%;" id="userPwdDBCheck"></label>
             </div>
             </div>

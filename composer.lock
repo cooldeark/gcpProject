@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1a6cbd27ea2769dcc98c848cda96d3d",
+    "content-hash": "e2de2f933225c7f6a587f2918411159d",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -480,21 +480,21 @@
         },
         {
             "name": "google/cloud-bigquery",
-            "version": "v1.13.0",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-bigquery.git",
-                "reference": "71275918b4e8a4eccd563293f023552c7a5f64fd"
+                "reference": "ad337175a00291d8c6cb9a95b945ef6ac867c3a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-bigquery/zipball/71275918b4e8a4eccd563293f023552c7a5f64fd",
-                "reference": "71275918b4e8a4eccd563293f023552c7a5f64fd",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-bigquery/zipball/ad337175a00291d8c6cb9a95b945ef6ac867c3a6",
+                "reference": "ad337175a00291d8c6cb9a95b945ef6ac867c3a6",
                 "shasum": ""
             },
             "require": {
                 "google/cloud-core": "^1.35",
-                "ramsey/uuid": "~3"
+                "ramsey/uuid": "^3.0|^4.0"
             },
             "require-dev": {
                 "erusev/parsedown": "^1.6",
@@ -526,7 +526,7 @@
                 "Apache-2.0"
             ],
             "description": "BigQuery Client for PHP",
-            "time": "2020-02-11T23:07:13+00:00"
+            "time": "2020-03-30T20:36:58+00:00"
         },
         {
             "name": "google/cloud-core",

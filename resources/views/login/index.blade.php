@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -43,17 +44,9 @@
         <div class="overlay"></div>
     </header>
     <section class="site" style="height:100%;overflow:auto;" id="MyMainContainer">
-        <div id="headerContainer" class="container"><!--container is 置中-->
-            <div class="nav-scroller py-1 mb-2">
-                <nav  class="nav justify-content-between">
-                    <a class="p-2 text-white" href="{{url('/index')}}"><i class="fa fa-home"></i> 首頁</a>
-                    <a href="{{url('/aboutMe')}}" id="aboutMe" class="p-2 text-white"><i class="fa fa-address-card"></i> 關於我</a>
-                    <a href="{{url('/index')}}" class="p-2 text-white"><i class="fa fa-list-alt"></i> 作品資訊</a>
-                    <a href="{{url('/index')}}" class="p-2 text-white"><i class="fa fa-child"></i> 聯絡我</a>
-                    <a href="{{url('/logout')}}" class="p-2 text-white"><i class="fa fa-blind"></i> 登出</a>
-                </nav>
-            </div>
-        </div>
+    <div id="headerContainer" class="container"><!--container is 置中-->
+      @include('layouts.topBanner')
+    </div>
         <div id="mainContainer" class="">
           <h1 style="font-size: 70px;" class="col-md-12">I love Programing</h1>
           <h3  class="col-md-12 mt-md-4"><!--m is margin t is top -->

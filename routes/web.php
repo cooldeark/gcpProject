@@ -30,3 +30,7 @@ Route::get('/testEmail','indexLoginController@testEmail');
 Route::get('/test',function(){
     return view('/welcome');
 });
+
+Route::get('/testExtend',function(){
+    return view('/teachTest/testExtend');
+});

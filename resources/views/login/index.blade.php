@@ -8,13 +8,13 @@
 .font{
   font-family:Tahoma;
 }
-#testme{
+#arrowPng{
 
   
   position: relative;
 
 /*這裡的animation-name會綁定到@keyframes那邊的名稱*/
-  animation-name: fuck;
+  animation-name: arrowPngAnimation;
 
   animation-duration: 1.5s;
 
@@ -25,7 +25,7 @@
   animation-iteration-count: infinite;
 }
 
-@keyframes fuck {
+@keyframes arrowPngAnimation {
   /* 使用百分比的意思是在你所設定秒數的裡面去做變化，在四秒的0%的時候的意思 */
   0%   { left:0px; top:0px;}
   25%  { left:0px; top:0px;}
@@ -61,7 +61,7 @@
             
             </hgroup>
             <div id="setCenterDiv" class="d-flex justify-content-center align-items-center h-100 row mt-5 pt-5"><!--position:fixed;top:55%;left:50%;-->
-              <img src="{{asset('image/arrow2.png')}}" id="testme" style="color:white;"></img>
+              <img src="{{asset('image/arrow2.png')}}" id="arrowPng" style="color:white;"></img>
             </div>
             
         </div>

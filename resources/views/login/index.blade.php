@@ -2,20 +2,39 @@
 <!doctype html>
 <html>
 <head>
-  <script src="{{asset('js/james-tracker-compile.js')}}"></script>
-<link rel="stylesheet" href="css/index.css"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><!--css about font-awesome-->
-
+@include('layouts.library')
 <title>James's Category</title>
 <style>
 .font{
   font-family:Tahoma;
 }
+#testme{
+
+  
+  position: relative;
+
+/*這裡的animation-name會綁定到@keyframes那邊的名稱*/
+  animation-name: fuck;
+
+  animation-duration: 1s;
+
+  /*指定動畫進行方向，預設是normal是順時針*/
+  animation-direction: reverse;
+
+  /*動畫要做幾次，如果是infinte就是一直做不停*/  
+  animation-iteration-count: infinite;
+}
+
+@keyframes fuck {
+  /* 使用百分比的意思是在你所設定秒數的裡面去做變化，在四秒的0%的時候的意思 */
+  0%   { left:0px; top:0px;}
+  25%  { left:0px; top:0px;}
+  50%  {left:0px; top:15px;}
+  75%  { left:0px; top:0px;}
+  100% {  top:0px;}
+}
+
+
 </style>
 <script>
   window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
@@ -39,8 +58,14 @@
             <hgroup>
             <h1>Hi ! I'm James.</h1>
             <i>Scroll Down To Know Me More</i>
+            
             </hgroup>
+            <div id="setCenterDiv" class="d-flex justify-content-center align-items-center h-100 row mt-5 pt-5"><!--position:fixed;top:55%;left:50%;-->
+              <img src="{{asset('image/arrow2.png')}}" id="testme" style="color:white;"></img>
+            </div>
+            
         </div>
+        
         <div class="overlay"></div>
     </header>
     <section class="site" style="height:100%;overflow:auto;" id="MyMainContainer">

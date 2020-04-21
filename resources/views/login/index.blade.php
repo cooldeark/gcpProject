@@ -16,7 +16,7 @@
 /*這裡的animation-name會綁定到@keyframes那邊的名稱*/
   animation-name: fuck;
 
-  animation-duration: 1s;
+  animation-duration: 1.5s;
 
   /*指定動畫進行方向，預設是normal是順時針*/
   animation-direction: reverse;

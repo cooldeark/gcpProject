@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 use Google\Cloud\BigQuery\BigQueryClient;
 use Google\Cloud\Core\ExponentialBackoff;
 use Google\Cloud\Core\ServiceBuilder;
-putenv("GOOGLE_APPLICATION_CREDENTIALS=mesmerizing-bee-273409-0b1b453c26f1.json");
+putenv("GOOGLE_APPLICATION_CREDENTIALS=myweb-274810-5dd7c0d65a18.json");
 class bigQueryController extends Controller
 {
     function saveSearchTable(){
         $isComplete=false;
         // $project=new ServiceBuilder([
-        //     'projectId' => 'mesmerizing-bee-273409',
+        //     'projectId' => 'myweb-274810',
         // ]);
         $bigquery= new BigQueryClient([
-            'projectId'=>'mesmerizing-bee-273409'
+            'projectId'=>'myweb-274810'
         ]);
         $saveTable=$bigquery->dataset('james_profile_daily_log')->table('daily_log_20200407');
         $myQuery=sprintf("
-        SELECT * FROM `mesmerizing-bee-273409.james_profile_daily_log.daily_log_20200413` ;
+        SELECT * FROM `myweb-274810.james_profile_daily_log.daily_log_20200413` ;
         ");
 
         $QueryJobConfiguration = $bigquery
@@ -44,10 +44,10 @@ class bigQueryController extends Controller
     function searchTableData(){
         $isComplete=false;
         $bigquery= new BigQueryClient([
-            'projectId'=>'mesmerizing-bee-273409'
+            'projectId'=>'myweb-274810'
         ]);
         $myQuery=sprintf("
-        SELECT * FROM `mesmerizing-bee-273409.james_profile_daily_log.daily_log_20200413`;
+        SELECT * FROM `myweb-274810.james_profile_daily_log.daily_log_20200421`;
         ");
             $QueryJobConfiguration=$bigquery->query($myQuery);
             $result=$bigquery->startQuery($QueryJobConfiguration);
@@ -63,7 +63,7 @@ class bigQueryController extends Controller
             $DataResult=$result->queryResults();//可取資料
 
             foreach($DataResult as $value){//測試是否有取得資料
-                print_r($value);exit;
+                print_r($value['userAgent']);exit;
             }
 
     }

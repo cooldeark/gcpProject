@@ -2,6 +2,7 @@
 <!doctype html>
 <html>
 <head>
+<link rel="stylesheet" href="css/index.css"/>
 @include('layouts.library')
 <title>James's Category</title>
 <style>
@@ -10,12 +11,12 @@
 }
 #arrowPng{
 
-  
+  cursor: pointer;
   position: relative;
 
 /*這裡的animation-name會綁定到@keyframes那邊的名稱*/
   animation-name: arrowPngAnimation;
-
+  opacity: 0.7;
   animation-duration: 1.5s;
 
   /*指定動畫進行方向，預設是normal是順時針*/
@@ -156,6 +157,14 @@ var myContent=$('header .content')
 var myBlur=$('header .overlay')
 var wHeight=$(window).height();
 
+$('#arrowPng').click(function(e){
+  window.scrollBy({
+    top:wHeight,
+    left:0,
+    behavior:'smooth'
+  });
+  
+});
 $(window).on('resize', function(){
   wHeight = $(window).height();
 });

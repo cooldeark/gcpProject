@@ -1,9 +1,12 @@
 <p>
-    Hi , please copy the link to verify your Account :
+    Hi , please follow the link to verify your Account :
 </p>
-<input style="width:70%;" value="{{ $params['userVerify'] }}"/>
+<p>{{ $params['userVerify'] }}</p>
 <p>
-    If you have any questions please contact us with this email , thanks.
+    If you have any questions please contact us with website owner :
+</p>
+<p>
+    cooldeark@gmail.com 
 </p>
 <p>
     Best Regards

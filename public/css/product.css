@@ -1,0 +1,17 @@
+html {
+    font: 1em/1.5 "Lato", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizelegibility;
+  }
+
+body {
+    background: #4b6374;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  }
+  /* :D */
+  .site nav a:hover{
+    background:rgb(214, 219, 241);
+    color:rgb(19, 10, 10)
+  }
+  

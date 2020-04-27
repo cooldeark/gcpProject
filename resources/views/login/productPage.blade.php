@@ -1,164 +1,180 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"><!--css about font-awesome-->
-<link rel="stylesheet" href="css/product.css">    
-</head>
-<body style="overflow:hidden;"><!--治標不治本的方式，讓scrollbar消失，所以就會固定上面bar條了-->
 
-<div class="nav-scroller py-1 mb-2">
-                <nav  class="nav justify-content-between">
-                    <a class="p-2 text-white" href="{{url('/index')}}"><i class="fa fa-home"></i> 首頁</a>
-                    <a href="{{url('/aboutMe')}}" id="aboutMe" class="p-2 text-white"><i class="fa fa-address-card"></i> 關於我</a>
-                    <a href="{{url('/index')}}" class="p-2 text-white"><i class="fa fa-list-alt"></i> 作品資訊</a>
-                    <a href="{{url('/index')}}" class="p-2 text-white"><i class="fa fa-child"></i> 聯絡我</a>
-                    <a href="{{url('/logout')}}" class="p-2 text-white"><i class="fa fa-blind"></i> 登出</a>
-                </nav>
-</div>
-<div class="skw-pages">
-  <div class="skw-page skw-page-1 active">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content"></div>
-      </div>
-    </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">南山IT部門經歷</h2>
-          <p class="skw-page__description">&nbsp;&nbsp;在2017年進入南山境界專案，當時擔任BPM(Business Progress Management) Team裡的前端工程師，在team裡面關於前端的Defect都由我處理，
-              主要是使用SAPUI5在做開發與維護系統，並且當時有接觸到一些後端的處理，並參加境界專案開發的Meeting，與國外顧問討論問題與開發方面的優化。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="skw-page skw-page-2">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">南山IT部門經歷</h2>
-          <p class="skw-page__description">&nbsp;&nbsp;在2017年進入南山境界專案，當時擔任BPM(Business Progress Management) Team裡的前端工程師，在team裡面關於前端的Defect都由我處理，
-              主要是使用SAPUI5在做開發與維護系統，並且當時有接觸到一些後端的處理，並參加境界專案開發的Meeting，與國外顧問討論問題與開發方面的優化。</p>
-        </div>
-      </div>
-    </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content"></div>
-      </div>
-    </div>
-  </div>
-  <div class="skw-page skw-page-3">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content"></div>
-      </div>
-    </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">域動RD部門經歷</h2>
-          <p class="skw-page__description">&nbsp;&nbsp;在2019年，因想學習更全面的技術，毅然決然地到域動任職，在域動接任了DMP(Data Management Platform)的開發與維護，
-              在這裡有許多面向與南山不同，在域動須具備更多的技能，不只前端的使用，PHP，MYSQL，BigQuery，YII，Laravel，GCP，Git，VM，
-              都是需要學習與上手的必備技能，在域動的一年裡面，這些技能都已熟悉，在每個月一次的月會上，上台與大家分享我們技術方面的更新與理解，
-              讓大家知道我們技術人員主要在maintain什麼事情，對於公司有什麼樣的幫助，很謝謝域動提供的機會讓我成長。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="skw-page skw-page-4">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">Page 4</h2>
-          <p class="skw-page__description">Ok, ok, just one more scroll!</p>
-        </div>
-      </div>
-    </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content"></div>
-      </div>
-    </div>
-  </div>
-  <div class="skw-page skw-page-5">
-    <div class="skw-page__half skw-page__half--left">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content"></div>
-      </div>
-    </div>
-    <div class="skw-page__half skw-page__half--right">
-      <div class="skw-page__skewed">
-        <div class="skw-page__content">
-          <h2 class="skw-page__heading">Epic finale</h2>
-          <p class="skw-page__description">
-            Feel free to check 
-            <a class="skw-page__link" href="https://codepen.io/suez/pens/public/" target="_blank">my other pens</a> and follow me on 
-            <a class="skw-page__link" href="https://twitter.com/NikolayTalanov" target="_blank">Twitter</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
+@include('layouts.library')
+<link rel="stylesheet" href="css/product.css"/>
+<link rel="stylesheet" href="css/sideBar.css"/>
+<title>James's Product</title>
+<style>
+
+/* 這裡是匯入外部字體來使用 */
+/* @font-face {
+  font-family:cuteText;
+  src: url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css );
+} */
+
+</style>
 <script>
-$(document).ready(function() {
-
-var curPage = 1;
-var numOfPages = $(".skw-page").length;
-var animTime = 1000;
-var scrolling = false;
-var pgPrefix = ".skw-page-";
-
-function pagination() {
-  scrolling = true;
-
-  $(pgPrefix + curPage).removeClass("inactive").addClass("active");
-  $(pgPrefix + (curPage - 1)).addClass("inactive");
-  $(pgPrefix + (curPage + 1)).removeClass("active");
-
-  setTimeout(function() {
-    scrolling = false;
-  }, animTime);
-};
-
-function navigateUp() {
-  if (curPage === 1) return;
-  curPage--;
-  pagination();
-};
-
-function navigateDown() {
-  if (curPage === numOfPages) return;
-  curPage++;
-  pagination();
-};
-
-$(document).on("mousewheel DOMMouseScroll", function(e) {
-  if (scrolling) return;
-  if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-    navigateUp();
-  } else { 
-    navigateDown();
-  }
-});
-
-$(document).on("keydown", function(e) {
-  if (scrolling) return;
-  if (e.which === 38) {
-    navigateUp();
-  } else if (e.which === 40) {
-    navigateDown();
-  }
-});
-
-});
+  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
+  cft('setSiteId', 'JamesWebSite');
+  cft('setEnableCookie');
+  cft('setViewPercentage');
+  cft('setTPCookie');
+  console.log("cookie test");
+  cft('send', 'event', {
+    action: 'inProductPage',
+    category: '',
+    label: '',
+  });
 </script>
+</head>
+<body>
+<div id="forTopBannerContainer" class="site">
+@include('layouts.topBannerForLight')
+</div>
+ 
+<div id="container" class="">
+  <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><b>作品集</b></h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>作品集列表</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">HighCharts</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">分析到站人行為</a>
+                        </li>
+                        <li>
+                            <a href="#">尚未想到</a>
+                        </li>
+                        <li>
+                            <a href="#">尚未想到</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">Page 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 2</a>
+                        </li>
+                        <li>
+                            <a href="#">Page 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Portfolio</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
+                </li>
+                <li>
+                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fa fa-align-left"></i>
+                        <span>作品集</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+             <!--hightChart start-->
+            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct">
+              <div class="col-md-6">
+                <h2>HighCharts</h2>
+                <h6 class="mt-5 ml-5"><b>此頁面為分析到站人的作品，此會包括分析不重複人數，事件分析，並且轉換率等等。</b></h6>
+                <button class="btn btn-primary" id="highChartBtn">test</button>
+              </div>
+              <div class="col-md-6">
+                <img src="{{asset('image/hightChart1.jpg')}}"/>
+              </div>
+            </div>
+          <!--hightChart end-->
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h3>Lorem Ipsum Dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+ 
+
+</div>
+        
+
+    
+        
+       
+<script>
+  $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+$('#highChartBtn').click(function(){
+  window.location.href="{{url('/index')}}";
+});
+
+</script>
+
 </body>
 </html>

@@ -10,7 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/testBigquery','bigQueryController@saveSearchTable');
+Route::get('/testBigquery','bigQueryController@searchTableData');
+
 Route::get('/','indexLoginController@loginPage');
 Route::post('/checkAuth','indexLoginController@checkAuth');
 Route::get('/index','indexLoginController@loginSuccess');
@@ -24,6 +25,9 @@ Route::get('/confirmEmail','emailController@confirmEmail');
 // Route::get('/verifyEmail','indexLoginController@verifyLoginPage');//就算是自己內部導，還是要在這裡建置get的route
 Route::get('/sendMail','SendMailController@send');
 
+
+Route::get('/testExcel','excelInputController@import_excel');
+Route::post('/testExcel/import', 'excelInputController@import');
 
 Route::get('/testEmail','indexLoginController@testEmail');
 

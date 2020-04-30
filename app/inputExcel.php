@@ -11,12 +11,14 @@ class inputExcel extends Model
     public $table="excel1";//你的table
     //在fillable裡面的是代表哪些column可以被寫入的，沒有在裡面的都不能被寫入
     protected $fillable=[
+        'create_by',
+        'fileName',
         'name',
-        'gender',
-        'address',
-        'city',
-        'postal_code',
-        'country'
+        'create_account',
+        'ACNO',
+        'product_name',
+        'invest_money',
+        'index_year'
     ];
     
 }

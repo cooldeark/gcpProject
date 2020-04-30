@@ -116,6 +116,7 @@ class IndexLoginController extends Controller
 
     public function loginSuccess(){
         if(Auth::check()){  
+            // dd(auth()->user()->id);//get login user id
             return view('login.index');
         }else{
             // return redirect()->action('indexLoginController@loginPage');

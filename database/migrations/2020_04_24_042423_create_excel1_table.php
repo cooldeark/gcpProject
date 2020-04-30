@@ -17,12 +17,14 @@ class CreateExcel1Table extends Migration
         Schema::connection('mysql_excel')->create('excel1', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
+            $table->string('create_by');
+            $table->string('fileName');
             $table->string('name');
-            $table->string('gender');
-            $table->string('address');
-            $table->string('city');
-            $table->string('postal_code');
-            $table->string('country');
+            $table->date('create_account');
+            $table->string('ACNO');
+            $table->string('product_name');
+            $table->integer('invest_money');
+            $table->string('index_year');
         });
     }
 

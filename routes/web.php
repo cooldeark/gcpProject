@@ -25,8 +25,10 @@ Route::get('/confirmEmail','emailController@confirmEmail');
 // Route::get('/verifyEmail','indexLoginController@verifyLoginPage');//就算是自己內部導，還是要在這裡建置get的route
 Route::get('/sendMail','SendMailController@send');
 
+Route::get('/getExcelFileContent','excelInputController@getFileContent');
+Route::get('/downLoadPDF','excelInputController@exportDataByPDF');
 
-Route::get('/testExcel','excelInputController@import_excel');
+Route::get('/testExcel','excelInputController@excel_index');
 Route::post('/testExcel/import', 'excelInputController@import');
 
 Route::get('/testEmail','indexLoginController@testEmail');

@@ -28,6 +28,11 @@
     <button type="button" class="close" data-dismiss="alert">×</button>
            <strong>{{ $message }}</strong>
    </div>
+   @elseif($message=Session::get('error'))
+   <div class="alert alert-warning alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+           <strong>{{ $message }}</strong>
+   </div>
    @endif
    <form method="post" enctype="multipart/form-data" action="{{ url('/testExcel/import') }}">
     {{ csrf_field() }}
@@ -37,10 +42,11 @@
         <input type="password" name="fuck" value="31" style="display:none;"/>
        <td width="40%" align="right"><label>Select File for Upload</label></td>
        <td width="30">
-        <input type="file" name="select_file" />
+        <input type="file" name="select_file" /><!--type是file，就可以往後丟檔案-->
        </td>
        <td width="30%" align="left">
         <input type="submit" name="upload" class="btn btn-primary" value="上傳">
+        <button onclick="return false" id="exampleBtn" class="btn btn-primary">範例檔案下載</button>
        </td>
       </tr>
       <tr>
@@ -124,7 +130,7 @@
                 var myData=Data;
               //  console.log(myData);
               var showDataTD='',nowDataString;
-              
+              //這裡先用迴圈整理出下方資料，然後再跟最後的TH組合
               myData.forEach(element => {
                 nowDataString=
                   '<tr>'+
@@ -138,7 +144,7 @@
                     showDataTD=showDataTD.concat(nowDataString);
                     
               });
-              console.log(showDataTD);
+              // console.log(showDataTD);
                 $('#showViewFileContent').html('<table class="table table-bordered table-striped">'+
                   '<tr>'+
                   '<th>名字</th>'+
@@ -163,7 +169,7 @@
       var regexpResult=new RegExp("([^$]*)_");
       var regexpResult=regexpResult.exec(fileName)[1];//get capture value
       // console.log(regexpResult);
-      window.location.href="{{url('/downLoadPDF?params=')}}"+regexpResult;//下載檔案
+      window.location.href="{{url('/downLoadFile?params=')}}"+regexpResult;//下載檔案
 
 //       $.ajax({
 //             url:"/downLoadPDF",
@@ -178,6 +184,10 @@
 //           alert('Error occur please contact your administrator!');
 //         });
     }
+    $('#exampleBtn').click(function(){
+      window.location.href="{{url('/downExampleFile')}}";
+    });
+    
   </script>
  </body>
 </html>

@@ -17,7 +17,7 @@ class Users_Excel_Import implements ToModel,WithStartRow//,WithStartRow這是跟
     */
 
 
-    public function __construct($params){
+    public function __construct($params){//params是controller的這些資料進來=> $myValues=array('creator'=>$creator,'fileName'=>$getfileName);
         $this->myValue=$params;
         
     }
@@ -57,11 +57,21 @@ class Users_Excel_Import implements ToModel,WithStartRow//,WithStartRow這是跟
 
         //到這裡都是舊的，下面是新的，不過他會把第一排也吃進去，就是title那欄位
         
+        //這裡是判斷excel裡面轉時間的問題，Date::excelToDateTimeObject只能用在unixTime，type only can eat integer
+        // dd($row[1]);//從excel存進來的input 時間格式為mircosoft time
+        
+        if(gettype($row[1])=='integer'){
+            $row1Data=Date::excelToDateTimeObject($row[1]);
+        }else if(gettype($row[1])=='string'){
+            $converStringDateToTime=25569+(strtotime($row[1])/86400);//this is unixTime to excel date(microsoft time)
+            $row1Data=Date::excelToDateTimeObject($converStringDateToTime);
+        }
+        
         return new inputExcel([
                     'create_by'=>$this->myValue['creator'],
                     'fileName'=>$this->myValue['fileName'],
                     'name'  => $row[0],
-                    'create_account'        =>Date::excelToDateTimeObject($row[1]) ,
+                    'create_account'        =>$row1Data ,
                     'ACNO'       => $row[2],
                     'product_name'          => $row[3],
                     'invest_money'   => $row[4],
@@ -70,9 +80,9 @@ class Users_Excel_Import implements ToModel,WithStartRow//,WithStartRow這是跟
         ]);
         
     }
-//這個是跟上面一起做搭配的，都要有哦，這個funciton主要就是讓excel第一排的title不要被匯入DB
+//這個是跟上面一起做搭配的，都要有哦，這個funciton return 的數字就是讓excel第幾排不要被匯入DB，return 2 就是第一排不要匯入，第二排開始匯入
     public function startRow(): int
     {
-        return 2;
+        return 3;
     }
 }

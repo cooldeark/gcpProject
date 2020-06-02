@@ -68,7 +68,7 @@ return [
         'mysql_excel' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('excel_DB_HOST', '127.0.0.1'),//會先取第一個值DB_HOST，沒有才取後面
+            'host' => env('excel_DB_HOST', '127.0.0.1'),//會先取第一個值DB_HOST，沒有才取後面127.0.0.1
             'port' => env('excel_DB_PORT', '3306'),
             'database' => env('excel_DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),

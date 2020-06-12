@@ -56,7 +56,12 @@ class excelInputController extends Controller
                 
                 //  dd($fileName);//取得上傳檔案名稱，.xlsx or xls都能分析
 
-                $path = $request->file('select_file')->getRealPath();//取得你上傳檔案的路徑
+                // $path = $request->file('select_file')->getRealPath();//取得你上傳檔案的路徑,給windows用的
+                //給linux用的
+                $path1 = $request->file('select_file')->store('temp'); 
+                $path=storage_path('app').'/'.$path1;  
+                //給linux用的path
+                
                 $myValues=array('creator'=>$creator,'fileName'=>$getfileName);
                 //import 的參數列:
                 //public function import($import, $filePath, string $disk = null, string $readerType = null);

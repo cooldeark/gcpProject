@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <h2><b>DSP</b></h2>
                 <h4 class="mt-5 ml-5"><b>概念:</b></h4>
-                <h6 class="mt-5 ml-5"><b>此系統為提供廣告主投遞廣告，並且能觀看成效如何與消耗的成本，並且知道有多少人或是不重複使用者來觀看廣告。</b></h6>
+                <h6 class="mt-5 ml-5"><b>此系統為提供廣告主投遞廣告，並且能觀看成效如何與消耗的成本，並且知道有多少人或是不重複使用者來觀看廣告，使用框架為Laravel。</b></h6>
                 <!-- <button class="btn btn-primary" id="highChartBtn">test</button> -->
               </div>
               

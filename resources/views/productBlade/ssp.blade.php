@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <h2><b>SSP</b></h2>
                 <h4 class="mt-5 ml-5"><b>概念:</b></h4>
-                <h6 class="mt-5 ml-5"><b>此系統為提供版位主檢視相關資料，並且能管理網站與版位的開放。</b></h6>
+                <h6 class="mt-5 ml-5"><b>此系統為提供版位主檢視相關資料，並且能管理網站與版位的開放，使用框架為Laravel。</b></h6>
                 <!-- <button class="btn btn-primary" id="highChartBtn">test</button> -->
               </div>
               

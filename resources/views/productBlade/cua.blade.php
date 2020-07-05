@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <h2><b>CUA</b></h2>
                 <h4 class="mt-5 ml-5"><b>概念:</b></h4>
-                <h6 class="mt-5 ml-5"><b>此系統為管理公司各個系統平台的使用者 帳戶/權限/群組。</b></h6>
+                <h6 class="mt-5 ml-5"><b>此系統為管理公司各個系統平台的使用者 帳戶/權限/群組，使用框架為Laravel。</b></h6>
                 <!-- <button class="btn btn-primary" id="highChartBtn">test</button> -->
               </div>
               

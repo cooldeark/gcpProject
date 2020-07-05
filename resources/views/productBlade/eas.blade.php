@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <h2><b>EAS</b></h2>
                 <h4 class="mt-5 ml-5"><b>概念:</b></h4>
-                <h6 class="mt-5 ml-5"><b>此系統為提供公司帳務系統，管理與版位主的相關資料。</b></h6>
+                <h6 class="mt-5 ml-5"><b>此系統為提供公司帳務系統，管理與版位主的相關資料，使用框架為Yii。</b></h6>
                 <!-- <button class="btn btn-primary" id="highChartBtn">test</button> -->
               </div>
               

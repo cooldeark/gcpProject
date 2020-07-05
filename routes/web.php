@@ -20,6 +20,11 @@ Route::get('/register','indexLoginController@register');
 Route::post('/userRegist','indexLoginController@createUser');
 Route::get('/aboutMe','indexLoginController@aboutMe');
 Route::get('/product','indexLoginController@product');
+Route::get('/productDSP','indexLoginController@product');
+
+
+
+
 Route::get('/errorPage','errorHandleController@errorPage');
 Route::get('/confirmEmail','emailController@confirmEmail');
 // Route::get('/verifyEmail','indexLoginController@verifyLoginPage');//就算是自己內部導，還是要在這裡建置get的route
@@ -44,3 +49,5 @@ Route::get('/test',function(){
 Route::get('/testExtend',function(){
     return view('/teachTest/testExtend');
 });
+
+Route::get('/wordCloud','indexLoginController@wordCloud');

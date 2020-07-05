@@ -77,13 +77,18 @@
           <h1 style="font-size: 70px;" class="col-md-12">I love Programing</h1>
           <h3  class="col-md-12 mt-md-4"><!--m is margin t is top -->
             When I'm coding , that's make me enjoy all the time,<br>
-            In program language which is good at to used were under below.<br><br>
+            Under below ,these program language were all I'm good at to used .<br><br>
             <b  style="font-size: 50px;"> I'm good at  </b> <br><br>
             <b>Framework : </b>
-            Yii , Laravel , NWDS<br><br>
-            <b>Language : </b>
-            Sapui5 , Javascript , Jquery , Html , Css , PHP , SQL , RegExp<br>
-            
+            Yii , Laravel , CI<br><br>
+            <b>Frontend : </b>
+            Javascript、Html、 Jquery 、CSS、Angular、React<br><br>
+            <b>Backend : </b>
+            PHP<br><br>
+            <b>Database : </b>
+            SQL 、BigQuery 、Athena<br><br>
+            <b>Cloud : </b>
+            GCP、 AWS<br><br>
           </h3>
         </div> 
     </section>

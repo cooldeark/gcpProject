@@ -239,8 +239,20 @@ class IndexLoginController extends Controller
         
     }
     public function product(){
+        
         if(Auth::check()){
-            return view('login.productPage');
+            return view('login.productPageCase');
+            // return view('productBlade.dmp');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
+    }
+
+    public function productDMP(){
+        
+        if(Auth::check()){
+            return view('productBlade.dmp');
         }else{
             return redirect()->action('indexLoginController@loginPage');
         }
@@ -256,6 +268,11 @@ class IndexLoginController extends Controller
         {
             $message->to('cooldeark@gmail.com', 'fuck')->subject('Welcome!');
         });
+    }
+
+
+    public function wordCloud(){
+        return view('wordCloud');
     }
 
     

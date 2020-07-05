@@ -19,8 +19,14 @@ Route::get('/logout','indexLoginController@logOut');
 Route::get('/register','indexLoginController@register');
 Route::post('/userRegist','indexLoginController@createUser');
 Route::get('/aboutMe','indexLoginController@aboutMe');
+
+//product blade
 Route::get('/product','indexLoginController@product');
-Route::get('/productDSP','indexLoginController@product');
+Route::get('/productDMP','indexLoginController@productDMP');
+Route::get('/productDSP','indexLoginController@productDSP');
+Route::get('/productSSP','indexLoginController@productSSP');
+Route::get('/productEAS','indexLoginController@productEAS');
+Route::get('/productCUA','indexLoginController@productCUA');
 
 
 

@@ -46,19 +46,22 @@
             <ul class="list-unstyled components">
                 <!-- <p>作品集列表</p> -->
                 <li class="active">
-                    <a href="#homeFirst" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">維護系統</a>
+                    <a href="#homeFirst" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">系統介紹</a>
                     <ul class="collapse list-unstyled" id="homeFirst">
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">DMP</a>
+                            <a href="{{url('/productDMP')}}" >DMP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">SSP</a>
+                            <a href="{{url('/productSSP')}}" >SSP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">DSP</a>
+                            <a href="{{url('/productDSP')}}" >DSP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">EAS</a>
+                            <a href="{{url('/productEAS')}}" >EAS</a>
+                        </li>
+                        <li>
+                            <a href="{{url('/productCUA')}}" >CUA</a>
                         </li>
                         <!-- <li>
                             <a href="#">尚未想到</a>
@@ -69,10 +72,13 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">網站列表</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">卡洛塔妮</a>
+                            <a href="{{url('/product')}}" >網站介紹</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">快點集團</a>
+                            <a href="https://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
+                        </li>
+                        <li>
+                            <a href="https://www.yangminglin.ml/" target="_blank">前往-快點集團</a>
                         </li>
                         <!-- <li>
                             <a href="#">尚未想到</a>
@@ -172,7 +178,12 @@
             <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct">
               <div class="col-md-6">
                 <h2><b>卡洛塔妮</b></h2>
-                <h6 class="mt-5 ml-5"><b>此頁面為分析到站人的作品，此會包括分析不重複人數，事件分析，並且轉換率等等。</b></h6>
+                <h5 class="mt-5 ml-5"><b>此網站所套用的框架為Laravel，使用簡介:</b></h5>
+                    <p style="color:black;" class="mt-5 ml-5">1.需播放完youtube影片才能點選開始遊戲</p>
+                    <p style="color:black;" class="mt-5 ml-5">2.開始遊戲需登入FB，並驗證成功才能玩遊戲</p>
+                    <p style="color:black;" class="mt-5 ml-5">3.完成遊戲後，可以分享相關內容</p>
+                    <p style="color:black;" class="mt-5 ml-5">4.使用session記憶看過影片，如回到首頁不需重複觀賞影片即可點選遊戲鈕</p>
+                    <p style="color:black;" class="mt-5 ml-5">5.填寫資料後，會經由處理後顯示在參加名單頁</p>
                 <!-- <button class="btn btn-primary" id="highChartBtn">test</button> -->
               </div>
               <div class="col-md-6">
@@ -183,18 +194,19 @@
 
             <div class="line"></div>
 
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct">
+                <div class="col-md-6">
+                  <h2><b>快點集團</b></h2>
+                  <h5 class="mt-5 ml-5"><b>此網站所套用的框架為Codeigniter，使用簡介:</b></h5>
+                      <p style="color:black;" class="mt-5 ml-5">1.畫面 紅點、橘點、藍點 經由點擊可替換不同素材顯示</p>
+                      <p style="color:black;" class="mt-5 ml-5">2.切換不同顏色，案例分享的顯現方式皆為不同</p>
+                 
+                </div>
+                <div class="col-md-6">
+                  <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/agiLogo.png')}}"/>
+                </div>
+              </div>
 
-            <div class="line"></div>
-
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-            <div class="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
         
     </div>

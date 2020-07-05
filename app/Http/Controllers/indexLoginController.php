@@ -259,6 +259,47 @@ class IndexLoginController extends Controller
         
     }
 
+    public function productDSP(){
+        
+        if(Auth::check()){
+            return view('productBlade.dsp');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
+    }
+
+    public function productSSP(){
+        
+        if(Auth::check()){
+            return view('productBlade.ssp');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
+    }
+
+
+    public function productEAS(){
+        
+        if(Auth::check()){
+            return view('productBlade.eas');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
+    }
+
+    public function productCUA(){
+        
+        if(Auth::check()){
+            return view('productBlade.cua');
+        }else{
+            return redirect()->action('indexLoginController@loginPage');
+        }
+        
+    }
+
 
 
     public function testEmail(){

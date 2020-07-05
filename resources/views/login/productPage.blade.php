@@ -46,33 +46,37 @@
             <ul class="list-unstyled components">
                 <!-- <p>作品集列表</p> -->
                 <li class="active">
-                    <a href="#homeFirst" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">維護系統</a>
+                    <a href="#homeFirst" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">系統介紹</a>
                     <ul class="collapse list-unstyled" id="homeFirst">
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">DMP</a>
+                            <a href="{{url('/productDMP')}}" >DMP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">SSP</a>
+                            <a href="{{url('/productSSP')}}" >SSP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">DSP</a>
+                            <a href="{{url('/productDSP')}}" >DSP</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">EAS</a>
+                            <a href="{{url('/productEAS')}}" >EAS</a>
                         </li>
-                        <!-- <li>
-                            <a href="#">尚未想到</a>
-                        </li> -->
+                        <li>
+                            <a href="{{url('/productCUA')}}" >CUA</a>
+                        </li>
+                        
                     </ul>
                 </li>
                 <li class="active">
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">網站列表</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">卡洛塔妮</a>
+                            <a href="{{url('/product')}}" >網站介紹</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">快點集團</a>
+                            <a href="https://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
+                        </li>
+                        <li>
+                            <a href="https://www.yangminglin.ml/" target="_blank">前往-快點集團</a>
                         </li>
                         <!-- <li>
                             <a href="#">尚未想到</a>

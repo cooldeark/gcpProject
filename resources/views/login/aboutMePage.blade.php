@@ -29,7 +29,7 @@
     <div class="skw-page__half skw-page__half--left">
       <div class="skw-page__skewed">
         <div class="skw-page__content">
-          <h2 class="skw-page__heading">南山IT部門經歷</h2>
+          <h2 class="skw-page__heading">南山IT部門經歷Recap</h2>
           <p class="skw-page__description">&nbsp;&nbsp;在南山裡面學習到如何跟不同的Team co-work，能清楚的理解對方的需求與清晰表達自身的想法，並學習到開發後的驗證流程，如何嚴謹的測試是否有與其他function 有 dependency，在這裡我覺得最有成就的是能維護公司使用量最大的保單簽核系統並站在user角度上去優化UI，讓user使用起來更friendly。</p>
         </div>
       </div>
@@ -62,7 +62,7 @@
     <div class="skw-page__half skw-page__half--left">
       <div class="skw-page__skewed">
         <div class="skw-page__content">
-          <h2 class="skw-page__heading">域動RD部門經歷</h2>
+          <h2 class="skw-page__heading">域動RD部門經歷Recap</h2>
           <p class="skw-page__description">&nbsp;&nbsp;在這裡我學習的真的非常多，也大大充實了我對於cloud端的運用，也有許許多多的成就喜悅，其中印象最深刻的是，將公司的cloud機器從GCP搬移到AWS，雖然聽起來只是從一個平台搬移到另一個平台，但是其中的scope真的很龐大，你必須很謹慎的將各個系統所對應到的細節: domain、database、project version...等，都要去驗證，環境的重新建設，理解原生機器的架設方式，是否有安排daily schedule job執行，這件事情主管託付給我去執行，並給予一周去research如何達到，並在一個月內搬遷完畢，想到經過幾天的熬夜，真正go life的時候還是十分的開心!! 其他像是使用雲端資料，使用PHP處理資料速度不夠快，survey後採用python去呼叫datastore執行，或是使用google的虛擬環境經由PHP與python的結合跑出報表，都是非常有成就感的經歷。</p>
         </div>
       </div>

@@ -11,6 +11,7 @@
   
   <div class="container">
    <h3 align="center">Excel 上傳</h3>
+   <p style="text-align: center;">此功能會有權限方面的考量，不同使用者之間是無法看到其他人的檔案內容。</p>
     <br />
    @if(count($errors) > 0)
     <div class="alert alert-danger">
@@ -40,7 +41,7 @@
      <table class="table">
       <tr>
         <input type="password" name="fuck" value="31" style="display:none;"/>
-       <td width="40%" align="right"><label>Select File for Upload</label></td>
+       <td width="40%" align="right"><label>選擇檔案上傳</label></td>
        <td width="30">
         <input type="file" name="select_file" /><!--type是file，就可以往後丟檔案-->
        </td>
@@ -112,6 +113,9 @@
       </table>
      </div>
     </div>
+   </div>
+   <div >
+    <a href="{{url('/product')}}" class="btn btn-primary">回作品頁</a>
    </div>
   </div>
   <script>

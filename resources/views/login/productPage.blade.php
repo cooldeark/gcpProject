@@ -83,6 +83,15 @@
                         </li> -->
                     </ul>
                 </li>
+
+                <li class="active">
+                    <a href="#homeSecond" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">小作品集</a>
+                    <ul class="collapse list-unstyled" id="homeSecond">
+                        <li>
+                            <a href="{{url('/testExcel')}}" >Excel Download & Upload</a>
+                        </li>
+                    </ul>
+                </li>
                 
 
 

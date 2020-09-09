@@ -9,7 +9,7 @@ use DB;
 use Excel;
 use App\Imports\Users_Excel_Import;
 use App\Exports\Users_Excel_Export;
-
+// use PhpOffice\PhpWord\PhpWord;
 use Auth;//如果要使用驗證要有這個
 class excelInputController extends Controller
 {
@@ -99,6 +99,43 @@ class excelInputController extends Controller
 
     }
 
+    function wordDownload(){
+        date_default_timezone_set('Asia/Taipei');
+        $PHPWord = new \PhpOffice\PhpWord\PhpWord();//將它具現化
+        $document=$PHPWord->loadTemplate(storage_path('app/public/wordExport/wordTemplate.docx'));//載入範本
+        //塞入值
+        $nowDate=date('Y-m',time());
+        $document->setValue('title_name', htmlspecialchars('姓名'));
+        $document->setValue('name',  htmlspecialchars("James"));
+        $document->setValue('y', (date("Y",time())));
+        $document->setValue('m',  date("m", time()));
+        $document->setValue('pay_y', (date("Y", strtotime("+1 month")) - 1911));
+        $document->setValue('pay_m',  date("m", strtotime("+1 month")));
+        $document->setValue('pay_d',  date("t", strtotime("+1 month")));
+        $document->setValue('title_taxid',  '稅金');
+        $document->setValue('taxid',  '123');
+        $document->setValue('address_type', '地址類別');
+        $document->setValue('address',  htmlspecialchars('天龍國天龍巷'));
+        $document->setValue('mail_address',  htmlspecialchars('james@clickforce.com.tw'));
+        $document->setValue('type',  '國內個人');
+        // $document->setValue('totle_pay', number_format($this->tax_down($model->type, $totle_pay), 0, ".", ","));
+        $document->setValue('totle_pay','1234');
+        // $document->setValue('tax_pay', number_format($this->taxDeduct($model->type, $totle_pay), 0, ".", ","));
+        $document->setValue('tax_pay','5566');
+        // $document->setValue('pay', number_format($this->taxDeductTot($model->type, $totle_pay), 0, ".", ","));
+        $document->setValue('pay','7788');
+        // $document->setValue('detil1', "本期收益請款收益 : " . number_format($SupplierApplicationMonies_v, 0, ".", ","));
+        $document->setValue('tax','20%');
+        $document->setValue('detil1','本期收益請款收益 : 15852');
+        $document->setValue('detil2','前年度未請款收益 : 5524');
+        $document->setValue('detil3', "");
+
+        $document->saveAs(storage_path('app/public/wordExport/goOut.docx'));//另存新檔案
+        header('Content-Disposition: attachment; filename=測試檔案.docx');//這個是設置你匯出的檔案名稱
+        readfile(storage_path('app/public/wordExport/goOut.docx'));//這個function是要把你剛剛設的參數東西，存入到哪個檔案裏面
+        unlink(storage_path('app/public/wordExport/goOut.docx'));//這個是要刪除哪個檔案這樣，基本上可以不用這個參數，因為saveAs會把它overwrite掉，基本上也可以放
+        exit;
+    }
 
     function test(){
         $test=inputExcel::create([

@@ -44,7 +44,7 @@ Route::post('/testExcel/import', 'excelInputController@import');
 Route::get('/getExcelFileContent','excelInputController@getFileContent');
 Route::get('/downLoadFile','excelInputController@exportDataByPDF');
 Route::get('/downExampleFile','excelInputController@exportExampleExcel');
-
+Route::get('/downLoadWordFile','excelInputController@wordDownload');
 
 Route::get('/testEmail','indexLoginController@testEmail');
 

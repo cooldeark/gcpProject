@@ -91,6 +91,9 @@
                         <li>
                             <a href="{{url('/testExcel')}}" >Excel Download & Upload</a>
                         </li>
+                        <li>
+                            <a href="{{url('/downLoadWordFile')}}" >Word Download</a>
+                        </li>
                     </ul>
                 </li>
 

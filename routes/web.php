@@ -48,6 +48,16 @@ Route::get('/downLoadWordFile','excelInputController@wordDownload');
 
 Route::get('/testEmail','indexLoginController@testEmail');
 
+
+Route::get('/dataTable/{happy?}','functionalController@limitDataTable');
+Route::get('/dataTableGetData','functionalController@getDataTableData');
+Route::get('/dataTableGetTypeList','functionalController@getDataTableTypeList');
+
+//test ip
+Route::get('/ipgood/{ip?}','functionalController@fuckip');//use by javascript get ip
+Route::get('/phpip','functionalController@phpip');
+Route::get('/realUserIp','functionalController@realUserIp');
+
 Route::get('/test',function(){
     return view('/welcome');
 });

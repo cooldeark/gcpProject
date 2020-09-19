@@ -40,6 +40,7 @@ class excelInputController extends Controller
             // $creator=$this->fuck=$request->fuck;//get view blade fuck value
             $creator=auth()->user()->id;
            
+            //判斷前端丟過來的檔案是否符合我們的副檔名，select_file為前端<input name="select_file"...> 的name，所以會抓到他的名字
             $this->validate($request, [
             'select_file'  => 'required|mimes:xls,xlsx'
             ]);

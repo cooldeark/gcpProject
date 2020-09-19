@@ -94,6 +94,9 @@
                         <li>
                             <a href="{{url('/downLoadWordFile')}}" >Word Download</a>
                         </li>
+                        <li>
+                            <a href="{{url('/dataTable')}}" >DataTable</a>
+                        </li>
                     </ul>
                 </li>
 

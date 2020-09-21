@@ -7,6 +7,7 @@ use DB;
 use Session;
 use Config;
 use Response;
+use App\IDtoName;
 class functionalController extends Controller
 {
     function __construct(Request $request){
@@ -59,28 +60,34 @@ class functionalController extends Controller
     // dd($secondQueryType);
     //第二種取資料方式end
     
-
-    $dataTableTypeList=Config::get('tableTypeList');
-
-
+    //這裡是拿下拉選單的值給予ui用
+    $dataTableTypeList=Config::get('tableTypeList')['webType'];
     return view('productBlade/dataTable',compact('dataTableTypeList'));
 
     }
 
     public function getDataTableData(Request $request){
+
         
         //這裡的$select_arr是用來組成query用的，所以如要更改要看這裡，這裡會隨著你的DB table column而有不同
+
+        $select_arr=[
+             '0' => 'id',
+             '1' => 'type',
+             '2' => 'name',
+             '3' => 'size_id',
+        ];
+
+/*//原本的參數
         $select_arr = [
-            // '0' => 'zone.id',
             '0' => 'id',
-            // '1' => 'zone.name',
             '1' => 'type',
-            // '2' => 'site.name',
             '2' => 'name',
-            '3' => 'zone.size_id',
+            '3' => 'size_id',
             '4' => 'zone.type',
             '5' => 'zone.status'
         ];
+*/
         $select_array = [
             'zone.id as id',
             'zone.type as type',
@@ -102,7 +109,7 @@ class functionalController extends Controller
 
 
         /**
-         * 這裡的request，是因為dataTable有掛勾，所以會丟很多相關使用者的操作UI上面的參數過來，
+         * 這裡的request，是因為與dataTable有掛勾，所以會丟很多dataTable UI上面的參數過來，
          * 所以我們用foreach的方式去剖析到底丟過來什麼東西而去做相關參數的query設定。
          */
         foreach ($request->query as $key => $value) {
@@ -169,11 +176,11 @@ class functionalController extends Controller
 
         //這裡判斷，如果使用者有丟value進來搜尋的話，我們就要用它有丟資料的東西去做搜尋
         if($user_is_search){
-            $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name'))->where($serach_col,'like','%'.$search_val.'%')->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
+            $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->where($serach_col,'like','%'.$search_val.'%')->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
             $Zone_count = DB::connection('mysql_ssp')->table('ssp_zone')->count();
             $Zone_count2 = $myData->count();
         }else{
-            $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name'))->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
+            $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
             //這裡的count是讓dataTable做顯示用的，計算你現在在第幾頁
             $Zone_count = DB::connection('mysql_ssp')->table('ssp_zone')->count();
             $Zone_count2 = $Zone_count;
@@ -187,12 +194,15 @@ class functionalController extends Controller
             "data" => array(),
         ];
 
-
+        $getSizeList=new IDtoName;
+        $getSizeList=$getSizeList->getDataTableSizeList();
 
         //這裡把我們的資料整理好丟給result的data裡面
         foreach($myData as $index=>$value){
             $ar = [];
             $ar["id"] = $value->id;
+
+            //畫面上type顯示替換
             if($value->type==1){
                 $myType='WEB';
             }else if($value->type==2){
@@ -201,24 +211,48 @@ class functionalController extends Controller
                 $myType="Adult";
             }
 
+
             $ar["type"]=$myType;
             $ar["name"]=$value->name;
+
+            $mySize=explode(',',$value->size_id);
+            $mySizeName="";
+            
+            //這裡將版位的ID變成名稱做顯示
+            foreach($mySize as $sizeIndex=>$sizeValue){
+                $mySizeName.=$getSizeList[$sizeValue]."<br>";
+            }
+            $ar["size_id"]=$mySizeName;
+
             array_push($result['data'],$ar);
         }
-
+        
         
         return json_encode($result, true);
     }
 
 
 
-    function getDataTableTypeList(){
-
-        $typeList=Config::get('tableTypeList');
+    function getDataTableSizeList(Request $req){
+        $getData=new IDtoName;
+        //這裡要確認是否有輸入資料進來做search
+        if($req->qu == null || $req->qu == ""){
+            $sizeList=$getData->getDataTableSizeList();
+        }else{
+            $size_array1 = $getData->getDataTableSizeList();
+            $sizeList= [];
+           
+            foreach ($size_array1 as $key => $value) {
+                if(preg_match("/$req->qu/i",$value)){
+                    $sizeList[$key]=$value;
+                }
+  
+            }
+        }
         //這裡一定要用下面的方式寫，才可以讓ui不會一直轉圈圈，不然會一直轉，要符合格式
         $remote_format = [
             "success" => true,
-            "result" => $typeList,
+            "result" => $sizeList,
         ];
         
       return Response::json($remote_format,201);//這裡201不是必要

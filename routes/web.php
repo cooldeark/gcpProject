@@ -51,7 +51,7 @@ Route::get('/testEmail','indexLoginController@testEmail');
 
 Route::get('/dataTable/{happy?}','functionalController@limitDataTable');
 Route::get('/dataTableGetData','functionalController@getDataTableData');
-Route::get('/dataTableGetTypeList','functionalController@getDataTableTypeList');
+Route::get('/dataTableGetSizeList','functionalController@getDataTableSizeList');
 
 //test ip
 Route::get('/ipgood/{ip?}','functionalController@fuckip');//use by javascript get ip

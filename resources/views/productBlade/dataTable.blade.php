@@ -38,6 +38,7 @@
                     <th>版位號碼</th>
                     <th>版位類別</th>
                     <th>版位名稱</th>
+                    <th>版位型式</th>
                 </tr>
             </thead>
             <tfoot>
@@ -68,13 +69,13 @@
             },
             "columnDefs": [
                 {
-                "targets": [2],//target這個參數是指定陣列裡面的欄位要做什麼事情，下面的orderable的意思是說，地2筆欄位不能做排列
+                "targets": [2,3],//target這個參數是指定陣列裡面的欄位要做什麼事情，下面的orderable的意思是說，第2筆欄位不能做排列
                 "orderable": false
                 },
                 { "width": "5%", "targets": 0 },
                 { "width": "5%", "targets": 1 },
                 { "width": "15%", "targets": 2 },
-                // { "width": "15%", "targets": 3 },
+                { "width": "15%", "targets": 3 },
                 // { "width": "15%", "targets": 4 },
                 // { "width": "10%", "targets": 5 },
                 // { "width": "10%", "targets": 6 },
@@ -113,6 +114,10 @@
                 },
                 {
                         "data":"name",
+                        "className": "center",
+                },
+                {
+                        "data":"size_id",
                         "className": "center",
                 },
                 /*
@@ -240,6 +245,8 @@
         }).DataTable();
         //處理loading畫面end
 
+
+        //這裡一定要宣告，因為有很多功能會去使用到dataTable這個參數
         var table = $('#zone_tbl').DataTable();
         
         //dataTable欄位裡面的搜尋欄位
@@ -251,7 +258,7 @@
         for (var x = 0; x < $('#zone_tbl thead tr th').length; x++) {
             tt += thtemp;
         }
-        // console.log($('#zone_tbl thead tr th').length);//這裡長度是3
+        // console.log($('#zone_tbl thead tr th').length);//這裡顯示的是長度4
         
         $('<tr role="row">' + tt + '</tr>').appendTo('#zone_tbl thead');
 
@@ -281,14 +288,28 @@
                             </select>
                         `;
                     break;
+
                 case 2:
                 var title = $(this).text();
                     var temp = `
                         <div class="ui fluid input" style="height: 3vmin; max-height: 3vmin;">
                             <input type="text" >
                         </div>`;
-
                     break;
+                
+                //case3 可以複選搜尋的input box        
+                case 3:
+                var title = $(this).text();
+                var temp = `
+                    <div class="ui small fluid multiple search selection dropdown" id="filterSizeTypeSelect" style="padding:.22619048em 0.1em .22619048em .35714286em; max-width:200px;">
+                        <input type="hidden">
+                        <i class="dropdown icon" ></i>
+                        <div class="default text"></div>
+                        <div class="menu" id="filterSizeTypeValue">
+                    </div>
+                    `;
+                    break;
+
                 default:
                     var temp = `
                         <div class="ui fluid input" style="height: 3vmin; max-height: 3vmin;">
@@ -309,6 +330,7 @@
             });
             //一般資料輸入去找尋的地方 end
 
+            //下拉選單的search box start
             $('.dt_select', this).on('change', function () {
                 table.search(JSON.stringify({
                     'col': i,
@@ -318,13 +340,15 @@
             });
 
         });
+        //下拉選單的search box end
 
 
+        //多重選擇的search box start
         $('#filterSizeTypeSelect').dropdown({
             
             toggleSubMenusOn: 'click',
             apiSettings:{
-                url:'{{url("/dataTableGetTypeList")}}',
+                url:'{{url("/dataTableGetSizeList")}}',
                 cache: false,
                 saveRemoteData: false,
                 data: {
@@ -339,16 +363,13 @@
                     } else {
                         settings.data.qu = searchBox_value;
                     }
-                    
                     return settings;
                 },
                 onSuccess: function (response) {
                 console.log('success');
                 var data = response.result;
                 var td_arr = [];
-      
                     $.each(data, function (k, v) {
-                        
                         td_arr.push(
                             `<div class="item" data-value="${k}">${v}</div>`
                         );
@@ -361,6 +382,9 @@
                 showOnFocus: true,
             }
         });
+        //多重選擇的search box end
+
+
 
         </script>
     </body>

@@ -73,8 +73,8 @@ class functionalController extends Controller
 
         $select_arr=[
              '0' => 'id',
-             '1' => 'type',
-             '2' => 'name',
+             '1' => 'name',
+             '2' => 'type',
              '3' => 'size_id',
         ];
 
@@ -107,7 +107,7 @@ class functionalController extends Controller
         //這裡的$select_arr是用來組成query用的 end
 
 
-
+        
         /**
          * 這裡的request，是因為與dataTable有掛勾，所以會丟很多dataTable UI上面的參數過來，
          * 所以我們用foreach的方式去剖析到底丟過來什麼東西而去做相關參數的query設定。
@@ -135,12 +135,40 @@ class functionalController extends Controller
                     break;
                 case 'search'://這個很重要，可以知道使用者有沒有使用搜尋功能
                     if (isset($value['value'])) {
-                        $d = json_decode($value['value']);
+                        $d = json_decode($value['value']);//這裡array 的 index就是col的順序，0為版位號碼，1維版位名稱以此類推
                         $user_is_search = true;//這裡判斷使用者是不是有輸入值
                         $zoneNotRepeat = true;
+                        
+                        $search_col_value=$d->val;
+                        $combinedQuery='';
+                        $allValueEmpty=0;//用來檢查是不是把所有搜尋值都拿掉
+                        foreach($search_col_value as $col => $val){
+                            //如果沒有值，就不放入搜尋列
+                            if($val==""){
+                                $allValueEmpty++;
+                            }else{
+                                //判斷是否有值，因為如果已經有了，代表要加上and
+                                if($combinedQuery!=''){
+                                    $nowSelect=$select_arr[$col];
+                                    $querySentence=' and '.$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
+                                    $combinedQuery.=$querySentence;
+                                }else{
+                                    $nowSelect=$select_arr[$col];
+                                    $querySentence=$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
+                                    $combinedQuery.=$querySentence;
+                                }
+                                
+                            }
+                        }
+                        
 
+
+                        //下面兩個是要去mysql 搜尋用的參數，是用於只有單欄搜尋的時候
+                        /*
                         $serach_col = $select_arr[$d->col];
                         $search_val = $d->val;
+                        */
+
                         /*
                         //這裡面的邏輯牽扯到不同使用者進來看到不同的畫面，所以要這樣去操作，例如管理者可以看到8欄位，使用者只有七欄這樣
                         if ($d->col!=1 && $d->col!=0) {
@@ -176,9 +204,33 @@ class functionalController extends Controller
 
         //這裡判斷，如果使用者有丟value進來搜尋的話，我們就要用它有丟資料的東西去做搜尋
         if($user_is_search){
+            
+            if($allValueEmpty==4){//代表所有值都是空的所以找全部
+                $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
+                //這裡的count是讓dataTable做顯示用的，計算你現在在第幾頁
+                $Zone_count = DB::connection('mysql_ssp')->table('ssp_zone')->count();
+                $Zone_count2 = $Zone_count;
+            }else{
+            $finalQuery=sprintf('select id,name,type,size_id from ssp_zone where %s limit %s offset %s',$combinedQuery,$length,$start);
+            $myData=DB::connection('mysql_ssp')->select($finalQuery);
+            //這個是單一搜尋時使用的
+            /*
             $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->where($serach_col,'like','%'.$search_val.'%')->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
+            */
+
+            
+
+            //這裡因為他有下搜尋條件式，所以我們不可以讓她用原先的raw數量去判別，要另外算，因為如果加上offset & limit他就無法顯示下一頁了
+            // $filter=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->where($serach_col,'like','%'.$search_val.'%')->get()->count();//原先的單獨寫法
+            
             $Zone_count = DB::connection('mysql_ssp')->table('ssp_zone')->count();
-            $Zone_count2 = $myData->count();
+
+            //這裡因為他有下搜尋條件式，所以我們不可以讓她用原先的raw數量去判別，要另外算，因為如果加上offset & limit他就無法顯示下一頁了
+            $filterQuery=sprintf('select id,name,type,size_id from ssp_zone where %s ',$combinedQuery);
+            $filterData=DB::connection('mysql_ssp')->select($filterQuery);
+            $filter=count($filterData);
+            $Zone_count2 = $filter;
+            }
         }else{
             $myData=DB::connection('mysql_ssp')->table('ssp_zone')->select(DB::raw('id,type,name,size_id'))->offset($start)->orderBy($order[0], $order[2])->limit($length)->get();
             //這裡的count是讓dataTable做顯示用的，計算你現在在第幾頁
@@ -234,6 +286,7 @@ class functionalController extends Controller
 
 
     function getDataTableSizeList(Request $req){
+        //這個function 是給 多重選擇下拉選單用的
         $getData=new IDtoName;
         //這裡要確認是否有輸入資料進來做search
         if($req->qu == null || $req->qu == ""){

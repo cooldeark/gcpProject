@@ -36,8 +36,8 @@
             <thead>
                 <tr>
                     <th>版位號碼</th>
-                    <th>版位類別</th>
                     <th>版位名稱</th>
+                    <th>版位類別</th>
                     <th>版位型式</th>
                 </tr>
             </thead>
@@ -73,8 +73,8 @@
                 "orderable": false
                 },
                 { "width": "5%", "targets": 0 },
-                { "width": "5%", "targets": 1 },
-                { "width": "15%", "targets": 2 },
+                { "width": "15%", "targets": 1 },
+                { "width": "5%", "targets": 2 },
                 { "width": "15%", "targets": 3 },
                 // { "width": "15%", "targets": 4 },
                 // { "width": "10%", "targets": 5 },
@@ -109,13 +109,14 @@
                     // },
                 },
                 {
-                        "data":"type",
-                        "className": "center",
-                },
-                {
                         "data":"name",
                         "className": "center",
                 },
+                {
+                        "data":"type",
+                        "className": "center",
+                },
+                
                 {
                         "data":"size_id",
                         "className": "center",
@@ -248,7 +249,8 @@
 
         //這裡一定要宣告，因為有很多功能會去使用到dataTable這個參數
         var table = $('#zone_tbl').DataTable();
-        
+        var checkInputIsFilter=false;
+        var filterSizeTypeInputValue='';
         //dataTable欄位裡面的搜尋欄位
          var tt = '';
         var thtemp = `
@@ -263,10 +265,12 @@
         $('<tr role="row">' + tt + '</tr>').appendTo('#zone_tbl thead');
 
         $('#zone_tbl thead tr:eq(1) th').each(function (i) {
+            
+            // var title = $(this).text();//因為這原本是抓欄位最上方的text，不過現在沒有要用
 
             switch (i) {
                 case 0:
-                var title = $(this).text();
+                
                     var temp = `
                         <div class="ui fluid input" style="height: 3vmin; max-height: 3vmin;">
                             <input type="text" >
@@ -275,9 +279,17 @@
                     break;
 
 
-                //case 1是下拉選單    
+                
                 case 1:
-
+                var temp = `
+                        <div class="ui fluid input" style="height: 3vmin; max-height: 3vmin;">
+                            <input type="text" >
+                        </div>`;
+                
+                    break;
+                    
+                //case 2是下拉選單            
+                case 2:
                 var temp = `
                             <select class="ui fluid dt_select" style="height: 3vmin; max-height: 3vmin;">
                                     <option></option>
@@ -287,22 +299,15 @@
                                 @endforeach
                             </select>
                         `;
-                    break;
-
-                case 2:
-                var title = $(this).text();
-                    var temp = `
-                        <div class="ui fluid input" style="height: 3vmin; max-height: 3vmin;">
-                            <input type="text" >
-                        </div>`;
+                    
                     break;
                 
                 //case3 可以複選搜尋的input box        
                 case 3:
-                var title = $(this).text();
+                
                 var temp = `
                     <div class="ui small fluid multiple search selection dropdown" id="filterSizeTypeSelect" style="padding:.22619048em 0.1em .22619048em .35714286em; max-width:200px;">
-                        <input type="hidden">
+                        <input name="filterSizeTypeInput" type="hidden">
                         <i class="dropdown icon" ></i>
                         <div class="default text"></div>
                         <div class="menu" id="filterSizeTypeValue">
@@ -316,25 +321,99 @@
                         </div>`;
                     break;
             }
-
+            
+            //這個是用this去把你switch裡面tr欄位替換成temp
             $(this).html(temp);
 
-            //一般資料輸入去找尋的地方 start
-            $('input', this).on('change', function () {
-                
+            
+            //單一欄位更改就會直接搜尋重畫dataTable但只會找自己那欄位的資料 start
+            /*
+            $('input', this).on('change', function () {    
                 table.search(JSON.stringify({
                     'col': i,
                     'val': this.value,
                 })).draw();
 
             });
-            //一般資料輸入去找尋的地方 end
+            */
+            //單一欄位更改就會直接搜尋重畫dataTable但只會找自己那欄位的資料 end
+
+
+
+            //input資料輸入去找尋的地方，複選的input也會被這function觸發 start
+            $('input', this).on('change', function () {
+                
+                //checkInputIsFilter是用來判斷這個input是否為複數下拉選單
+                if(this.name=='filterSizeTypeInput'){
+                    checkInputIsFilter=true;
+                    filterSizeTypeInputValue=this.value;
+                }else{
+                    checkInputIsFilter=false;
+                }
+                var getUserInput=$(this).parent().parent().parent().find('input');
+                var zoneIDQueryValue,zoneTypeQueryValue,zoneNameQueryValue,zoneSizeTypeQueryValue;
+                
+                for(var a=0;a<=getUserInput.length;a++){
+                    
+                    switch(a){
+                        case 0:
+                        zoneIDQueryValue=Object.entries(getUserInput)[a][1].value;
+                        break;
+
+                        case 1:
+                        zoneNameQueryValue=Object.entries(getUserInput)[a][1].value;
+                        
+                        break;
+
+                        case 2:
+                        zoneTypeQueryValue=$(".dt_select").val();
+                        break;
+
+                        case 3:
+                        zoneSizeTypeQueryValue=filterSizeTypeInputValue;
+                        break;
+                    }
+                }
+                var paramsArr=[zoneIDQueryValue,zoneNameQueryValue,zoneTypeQueryValue,zoneSizeTypeQueryValue];
+                
+                table.search(JSON.stringify({
+                    // 'col': i,
+                    'val': paramsArr,
+                })).draw();
+
+            });
+            //input資料輸入去找尋的地方 end
 
             //下拉選單的search box start
             $('.dt_select', this).on('change', function () {
+                var getUserInput=$(this).parent().parent().parent().find('input');
+                var zoneIDQueryValue,zoneTypeQueryValue,zoneNameQueryValue,zoneSizeTypeQueryValue;
+                
+                for(var a=0;a<=getUserInput.length;a++){
+                    
+                    switch(a){
+                        case 0:
+                        zoneIDQueryValue=Object.entries(getUserInput)[a][1].value;
+                        break;
+
+                        case 1:
+                        zoneNameQueryValue=Object.entries(getUserInput)[a][1].value;
+                        
+                        break;
+
+                        case 2:
+                        zoneTypeQueryValue=this.value;
+                        break;
+
+                        case 3:
+                        zoneSizeTypeQueryValue=filterSizeTypeInputValue;
+                        break;
+                    }
+                }
+                var paramsArr=[zoneIDQueryValue,zoneNameQueryValue,zoneTypeQueryValue,zoneSizeTypeQueryValue];
                 table.search(JSON.stringify({
-                    'col': i,
-                    'val': this.value
+                    // 'col': [0,1,2,3],
+                    'val': paramsArr
                 })).draw();
 
             });
@@ -366,7 +445,6 @@
                     return settings;
                 },
                 onSuccess: function (response) {
-                console.log('success');
                 var data = response.result;
                 var td_arr = [];
                     $.each(data, function (k, v) {

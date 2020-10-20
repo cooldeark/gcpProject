@@ -97,7 +97,7 @@
             "ajax": "{{url('/dataTableGetData')}}",
 
             "columns": [
-
+            //這裡的columns，就是在TH下面顯示的資料，第一個mData id就是第0欄要顯示的資料
             {
                     "mData": "id",
                     // "mRender": function (data, type, row) {
@@ -262,9 +262,9 @@
         }
         // console.log($('#zone_tbl thead tr th').length);//這裡顯示的是長度4
         
-        $('<tr role="row">' + tt + '</tr>').appendTo('#zone_tbl thead');
+        $('<tr role="row">' + tt + '</tr>').appendTo('#zone_tbl thead');//在這裡的appendTo zone_tbl thead，主要是在原本顯示欄位號碼 版位名稱...最上面的四個thead，在下面再多一欄thead，多一層th是要放我們的搜尋框框
 
-        $('#zone_tbl thead tr:eq(1) th').each(function (i) {
+        $('#zone_tbl thead tr:eq(1) th').each(function (i) {//因為我們有自己加入一行的th，所以用each，把我們空th的裡面放進我們要的搜尋框框
             
             // var title = $(this).text();//因為這原本是抓欄位最上方的text，不過現在沒有要用
 

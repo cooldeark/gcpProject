@@ -135,27 +135,68 @@ class functionalController extends Controller
                     break;
                 case 'search'://這個很重要，可以知道使用者有沒有使用搜尋功能
                     if (isset($value['value'])) {
-                        $d = json_decode($value['value']);//這裡array 的 index就是col的順序，0為版位號碼，1維版位名稱以此類推
+                        $d = json_decode($value['value']);//這裡array 的 index就是col的順序，0為版位號碼，1維版位名稱以此類推，不過因為我們要一次全找，所以這裡變成是所有搜尋value
                         $user_is_search = true;//這裡判斷使用者是不是有輸入值
                         $zoneNotRepeat = true;
                         
                         $search_col_value=$d->val;
                         $combinedQuery='';
-                        $allValueEmpty=0;//用來檢查是不是把所有搜尋值都拿掉
+                        $allValueEmpty=0;//用來檢查是不是搜尋欄都沒有輸入值
                         foreach($search_col_value as $col => $val){
                             //如果沒有值，就不放入搜尋列
                             if($val==""){
                                 $allValueEmpty++;
                             }else{
-                                //判斷是否有值，因為如果已經有了，代表要加上and
+                                //判斷combinedQuery是否有值，因為如果已經有了，代表query要加上and
                                 if($combinedQuery!=''){
                                     $nowSelect=$select_arr[$col];
-                                    $querySentence=' and '.$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
-                                    $combinedQuery.=$querySentence;
+                                    if($nowSelect=='size_id'){
+                                        $col_size_id_array=explode(',',$val);//把user輸入的sizeID編成陣列
+                                        $nowQueryValueSentence="";//這個是用來組合user輸入的sizeID的query語句
+                                        $querySetenceLength=count($col_size_id_array);//user輸入幾個值
+                                        
+                                        foreach($col_size_id_array as $sizeIDIndex=>$sizeIDValue){
+                                            $querySetenceLength--;//先扣一，這樣就可以去判斷是不是最後一個，要不要加and
+                                            $nowQueryValue=sprintf('(^%s$|^%s,|,%s,|,%s$)',$sizeIDValue,$sizeIDValue,$sizeIDValue,$sizeIDValue);//組合user輸入的sizeID
+                                            if($querySetenceLength==0){//如果為0最後的query就不用加上and
+                                                $nowQueryValueSentence.=$nowSelect.' regexp '.'"'.$nowQueryValue.'"';
+                                            }else{
+                                                $nowQueryValueSentence.=$nowSelect.' regexp '.'"'.$nowQueryValue.'"'.' and ';
+                                            }                                                 
+                                        }
+
+                                        $querySentence=' and '.$nowQueryValueSentence;
+                                        $combinedQuery.=$querySentence;
+                                        
+                                    }else{
+                                        $querySentence=' and '.$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
+                                        $combinedQuery.=$querySentence;
+                                    }
+                                    
                                 }else{
                                     $nowSelect=$select_arr[$col];
-                                    $querySentence=$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
-                                    $combinedQuery.=$querySentence;
+                                    if($nowSelect=='size_id'){
+                                        $col_size_id_array=explode(',',$val);
+                                        $nowQueryValueSentence="";
+                                        $querySetenceLength=count($col_size_id_array);
+                                        
+                                        foreach($col_size_id_array as $sizeIDIndex=>$sizeIDValue){
+                                            $querySetenceLength--;
+                                            $nowQueryValue=sprintf('(^%s$|^%s,|,%s,|,%s$)',$sizeIDValue,$sizeIDValue,$sizeIDValue,$sizeIDValue);
+                                            if($querySetenceLength==0){
+                                                $nowQueryValueSentence.=$nowSelect.' regexp '.'"'.$nowQueryValue.'"';
+                                            }else{
+                                                $nowQueryValueSentence.=$nowSelect.' regexp '.'"'.$nowQueryValue.'"'.' and ';
+                                            }                                                 
+                                        }
+                                        $querySentence=$nowQueryValueSentence;
+                                        $combinedQuery.=$querySentence;
+                                        
+                                    }else{
+                                        $querySentence=$nowSelect.' like '.'"%'.$val.'%"';//要記得like後面是接字串
+                                        $combinedQuery.=$querySentence;
+                                    }
+                                    
                                 }
                                 
                             }
@@ -256,9 +297,9 @@ class functionalController extends Controller
 
             //畫面上type顯示替換
             if($value->type==1){
-                $myType='WEB';
+                $myType='Web';
             }else if($value->type==2){
-                $myType="phone";
+                $myType="Phone";
             }else{
                 $myType="Adult";
             }
@@ -271,9 +312,15 @@ class functionalController extends Controller
             $mySizeName="";
             
             //這裡將版位的ID變成名稱做顯示
-            foreach($mySize as $sizeIndex=>$sizeValue){
-                $mySizeName.=$getSizeList[$sizeValue]."<br>";
+            try{
+                foreach($mySize as $sizeIndex=>$sizeValue){
+                    $mySizeName.=$getSizeList[$sizeValue]."<br>";
+                }
+            }catch(\Throwable $e){
+                // dd($e->getMessage());//印出錯誤
+                dd($value);
             }
+            
             $ar["size_id"]=$mySizeName;
 
             array_push($result['data'],$ar);

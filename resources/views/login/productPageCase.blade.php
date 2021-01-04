@@ -69,10 +69,10 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">網站列表</a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">接案列表</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="{{url('/product')}}" >網站介紹</a>
+                            <a href="{{url('/product')}}" >案件介紹</a>
                         </li>
                         <li>
                             <a href="https://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
@@ -80,9 +80,9 @@
                         <li>
                             <a href="https://www.yangminglin.ml/" target="_blank">前往-快點集團</a>
                         </li>
-                        <!-- <li>
-                            <a href="#">尚未想到</a>
-                        </li> -->
+                        <li>
+                            <a href="https://happywrite.yangminglin.ml/" target="_blank">前往-樂寫網</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="active">
@@ -187,8 +187,8 @@
                 </div>
             </nav>
 
-             <!--hightChart start-->
-            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct">
+             <!--part start-->
+            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct1">
               <div class="col-md-6">
                 <h2><b>卡洛塔妮</b></h2>
                 <h5 class="mt-5 ml-5"><b>此網站所套用的框架為Laravel，使用簡介:</b></h5>
@@ -203,11 +203,12 @@
                 <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/karihomeLogo.png')}}"/>
               </div>
             </div>
-          <!--hightChart end-->
+          <!--part end-->
 
             <div class="line"></div>
 
-            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct">
+            {{--part start--}}
+            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct2">
                 <div class="col-md-6">
                   <h2><b>快點集團</b></h2>
                   <h5 class="mt-5 ml-5"><b>此網站所套用的框架為Codeigniter，使用簡介:</b></h5>
@@ -219,6 +220,25 @@
                   <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/agiLogo.png')}}"/>
                 </div>
               </div>
+                {{--part end--}}
+                
+              <div class="line"></div>
+
+              <!--part start-->
+            <div class="h-30 w-100 row col-md-12 p-2"  id="HighChartsProduct3">
+                <div class="col-md-6">
+                  <h2><b>樂寫網</b></h2>
+                  <h5 class="mt-5 ml-5"><b>此網站所套用的框架為Laravel，使用簡介:</b></h5>
+                      <p style="color:black;" class="mt-5 ml-5">1.需註冊，有分教師與學生身分</p>
+                      <p style="color:black;" class="mt-5 ml-5">2.註冊成功後，會發信給帳號負責人做確認，他會經由信件內網址讓使用者帳號通過驗證</p>
+                      <p style="color:black;" class="mt-5 ml-5">3.如經由負責人驗證過帳號即可登入，學生能發文，教師能批改文章</p>
+                      <p style="color:black;" class="mt-5 ml-5">4.並且有文章內容管理，可以查看現在文章的內容與分數等等</p>
+                </div>
+                <div class="col-md-6">
+                  <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/wordteach.jpg')}}"/>
+                </div>
+              </div>
+            <!--part end-->
 
         </div>
         

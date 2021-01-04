@@ -47,7 +47,9 @@ class IDtoName extends Model
                $sizeList[$value->id]= __('Report.DropDownSizeName.maglev2');
             } else if ($value->width == 150 && $value->height == 150) {
                 $sizeList[$value->id]=__('Report.DropDownSizeName.maglev');
-            }else{
+            }else if ($value->width == 100 && $value->height == 100) {
+               $sizeList[0]=$value->width.'x'.$value->height.'Banner';//這個是解如果有人size_id 是0
+           }else{
             $sizeList[$value->id]=$value->width.'x'.$value->height.'Banner';
             }
         }

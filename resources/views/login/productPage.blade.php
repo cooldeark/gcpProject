@@ -16,19 +16,7 @@
 } */
 
 </style>
-<script>
-  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-  cft('setSiteId', 'JamesWebSite');
-  cft('setEnableCookie');
-  cft('setViewPercentage');
-  cft('setTPCookie');
-  console.log("cookie test");
-  cft('send', 'event', {
-    action: 'inProductPage',
-    category: '',
-    label: '',
-  });
-</script>
+
 </head>
 <body>
 <div id="forTopBannerContainer" class="site">
@@ -73,10 +61,13 @@
                             <a href="{{url('/product')}}" >網站介紹</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
+                            <a href="http://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">前往-快點集團</a>
+                            <a href="http://www.yangminglin.cf/" target="_blank">前往-快點集團</a>
+                        </li>
+                        <li>
+                            <a href="http://www.yangminglin.ml/" target="_blank">前往-樂寫網</a>
                         </li>
                         <!-- <li>
                             <a href="#">尚未想到</a>

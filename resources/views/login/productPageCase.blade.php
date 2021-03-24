@@ -16,19 +16,7 @@
 } */
 
 </style>
-<script>
-  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-  cft('setSiteId', 'JamesWebSite');
-  cft('setEnableCookie');
-  cft('setViewPercentage');
-  cft('setTPCookie');
-  console.log("cookie test");
-  cft('send', 'event', {
-    action: 'inProductPage',
-    category: '',
-    label: '',
-  });
-</script>
+
 </head>
 <body>
 <div id="forTopBannerContainer" class="site">
@@ -75,13 +63,13 @@
                             <a href="{{url('/product')}}" >案件介紹</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
+                            <a href="http://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
                         </li>
                         <li>
-                            <a href="https://www.yangminglin.ml/" target="_blank">前往-快點集團</a>
+                            <a href="http://www.yangminglin.cf/" target="_blank">前往-快點集團</a>
                         </li>
                         <li>
-                            <a href="https://happywrite.yangminglin.ml/" target="_blank">前往-樂寫網</a>
+                            <a href="http://www.yangminglin.ml/" target="_blank">前往-樂寫網</a>
                         </li>
                     </ul>
                 </li>
@@ -235,7 +223,7 @@
                       <p style="color:black;" class="mt-5 ml-5">4.並且有文章內容管理，可以查看現在文章的內容與分數等等</p>
                 </div>
                 <div class="col-md-6">
-                  <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/wordteach.jpg')}}"/>
+                  <img style="max-width: 600px;max-height: 500px;" src="{{asset('image/wordteach2.jpg')}}"/>
                 </div>
               </div>
             <!--part end-->

@@ -10,14 +10,7 @@
   <!--ClickForce trace code-->
 </head>
 <body style="background-color:#4D4D4F;"><!--back groundcolor-->
-  <script>
-    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-    cft('setSiteId', 'JamesWebSite');
-    cft('setEnableCookie');
-    cft('setViewPercentage');
-    cft('setTPCookie');
-    console.log("cookie test");
-  </script>
+ 
 <div  class="container">
     <div class="wrapper fadeInDown mx-auto" >
         <div  class="section" style="margin-top:20%;">

@@ -37,19 +37,6 @@
 
 
 </style>
-<script>
-  window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-  cft('setSiteId', 'JamesWebSite');
-  cft('setEnableCookie');
-  cft('setViewPercentage');
-  cft('setTPCookie');
-  console.log("cookie test");
-  cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'loginSuccess',
-    category: '',
-    label: '',
-  });
-</script>
 </head>
 <body style="">
     <a id="directmainContainer" href="#mainContainer" style="display:none;">mainContainer</a>

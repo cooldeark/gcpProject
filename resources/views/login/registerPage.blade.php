@@ -32,19 +32,6 @@ color: #222; }
 .formInput:focus:-moz-placeholder {
 color: #222; }
 </style> 
-<script>
-    window.cft=window.cft||function(){(cft.q=cft.q||[]).push([].slice.call(arguments))};
-    cft('setSiteId', 'JamesWebSite');
-    cft('setEnableCookie');
-    cft('setViewPercentage');
-    cft('setTPCookie');
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'registerPage',
-    category: '',
-    label: '',
-  });
-    console.log("cookie test");
-  </script>
 
 </head>
 <body style="background-color:#4D4D4F;">

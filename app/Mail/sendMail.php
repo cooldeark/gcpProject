@@ -21,6 +21,7 @@ class sendMail extends Mailable
 
         //外部傳進來的參數
         $this->myValue=$outInputValue;
+        
     }
 
     /**
@@ -30,8 +31,17 @@ class sendMail extends Mailable
      */
     public function build()
     {
-        
-        return $this->subject('JamesWeb 註冊驗證信')//信件的主旨
-        ->view('mail.sendMail')->with(['params'=>$this->myValue]);
+        //此為user寄信給我
+        if(array_key_exists('userSendtoMyself', $this->myValue)){
+            return $this->subject('JamesWeb User寄信來拉')//信件的主旨
+            ->view('mail.userSendMail')->with(['params'=>$this->myValue]); 
+
+        }else if(array_key_exists('sendToUser', $this->myValue)){
+            return $this->subject('JamesWeb')//信件的主旨
+            ->view('mail.sendToUserMail')->with(['params'=>$this->myValue]); 
+        }else{
+            return $this->subject('JamesWeb 註冊驗證信')//信件的主旨
+            ->view('mail.sendMail')->with(['params'=>$this->myValue]);
+        }
     }
 }

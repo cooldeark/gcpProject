@@ -85,43 +85,6 @@
         
        
 <script>
-  $('.fa-home').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'returnMainPage',
-    category: '',
-    label: '',
-  });
-  });
-
-  $('.fa-address-card').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickAboutMe',
-    category: '',
-    label: '',
-  });
-  });
-$('.fa-list-alt').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickProduct',
-    category: '',
-    label: '',
-  });
-  });
-
-  $('.fa-child').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickContactMe',
-    category: '',
-    label: '',
-  });
-  });
-  $('.fa-blind').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickLogOut',
-    category: '',
-    label: '',
-  });
-  });
 $(function(){
   $(window).scroll(function(){
     //這裡想要做滾動優化，可是還在看要怎做

@@ -25,7 +25,7 @@
                             <form name="loginInput" action="/checkAuth" method="POST" aria-required=""><!--action 指定你的route-->
                                 {{csrf_field()}}<!--if u post , must have this-->
                             <div class="form-group">
-                                <input type="text" id="loginAccount" class=" form-control fadeInDown" name="userName" placeholder="UserEmail"/>
+                                <input autocomplete="off" type="text" id="loginAccount" class=" form-control fadeInDown" name="userName" placeholder="UserEmail"/>
                                 <input autocomplete="off" type="text" style="-webkit-text-security: disc;" id="password" class="form-control fadeInDown"  name="userPwd" placeholder="UserPassword"/><!--style is gonna make input like password,autocomplete="off"可以讓輸入框不紀錄輸入過的值-->
                                 <input type="submit" class="fadeInDown" id="submitBtn" value="登入" onclick="return false"/>
                                 <a id="registerBtn" class="fadeInDown" href="{{url('/register')}}" style="cursor:auto;">註冊</a>
@@ -53,11 +53,7 @@
 </body>
 <script>
 $('#submitBtn').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickLoginBtn',
-    category: '',
-    label: '',
-  });
+    
     var myInputMail=$("input[name='userName']").val();
     var myInputPwd=$("input[name='userPwd']").val();
     var checkValid= new RegExp(".*\\@\\w{0,10}\\.\\w{0,10}\\.\\w{0,6}");//這裡有重點，在javascript裡面，原本正規表達式長這樣 .*\@\w{0,10}\.\w{0,10}\.\w{0,6}  ，因為javascript\要多加一條，所以都加上多一條就沒事惹
@@ -104,19 +100,6 @@ $('#submitBtn').click(function(){
     }
 
     
-});
-
-$('#registerBtn').click(function(){
-//   cft('send', 'event', {
-//     action: 'JamesTestInHome',    // 事件動作
-//     category: 'youHappy',    // 事件類別
-//     label: 'HappyTag',    // 事件標籤
-//   });
-  cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'clickRegisterBtn',
-    category: '',
-    label: '',
-  });
 });
 
 

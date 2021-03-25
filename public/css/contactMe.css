@@ -1,0 +1,23 @@
+.background{
+    background-color: #222;
+}
+
+nav > a:hover{
+    background:#333;
+    color:#fff
+  }
+
+  .vertical-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .inputLabel{
+    font-size: x-large;
+  }
+
+  .bodyback{
+    background-image:url("{{asset('image/contactMeBack03.jpg')}}");background-repeat: no-repeat;background-size: cover;
+  }

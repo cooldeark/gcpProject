@@ -66,8 +66,8 @@ color: #222; }
             </div>
             </div>
             <div class="row">
-                <button  class="btn btn-primary   mx-md-5 col-md-2" id="cancelBtn" type="button"  onclick="return false">取消</button><!--這裡記得，如果你沒有給button type 你按下enter他會直接觸發取消按鈕-->
                 <button  class="btn btn-primary   mx-md-5 col-md-2" id="submitBtn" type="submit" onclick="return false">送出</button>
+                <button  class="btn btn-primary   mx-md-5 col-md-2" id="cancelBtn" type="button"  onclick="return false">取消</button><!--這裡記得，如果你沒有給button type 你按下enter他會直接觸發取消按鈕-->
             </div>
         </form>
         </div>
@@ -88,11 +88,7 @@ color: #222; }
 
 
 $('#submitBtn').click(function(){
-    cft('send', 'event', {//自己分析自己ㄎㄎ
-    action: 'registerPageClickRegisterBtn',
-    category: '',
-    label: '',
-    });
+    
     // var userNameInput=$("input[name='userName']").val();//use name to get value
     var userNameInput=$('#userInputName').val();
     var userMailInput=$('#userInputMail').val();

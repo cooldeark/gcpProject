@@ -132,8 +132,11 @@
                 <li>
                     <a href="{{url('/product')}}" class="article"><i class="fa fa-list-alt"></i> 作品資訊</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="https://line.me/R/ti/p/83diRrD9ou" target="_blank" class="article"><i class="fa fa-child"></i> 聯絡我</a>
+                </li> --}}
+                <li>
+                    <a href="{{url('contactMe')}}" class="article"><i class="fa fa-child"></i> 聯絡我</a>
                 </li>
                 <li>
                     <a href="{{url('/logout')}}" class="article"><i class="fa fa-blind"></i> 登出</a>

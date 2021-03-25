@@ -192,7 +192,7 @@ class IndexLoginController extends Controller
             
             //整理我們要給予sendMail 的 value
             $sendMailParams=array();
-            $emailVerify="https://www.yangminglin.tk/confirmEmail?userMail=".$userVerify;
+            $emailVerify=url('/')."/confirmEmail?userMail=".$userVerify;
             $sendMailParams=['userVerify'=>$emailVerify];
             //下方是可以塞給我們sendMail這個class的value，$sendMailParams會是sendMail.php__construct的帶入參數
             Mail::to($to)->send(new sendMail($sendMailParams));
@@ -301,9 +301,37 @@ class IndexLoginController extends Controller
     }
 
 
+    public function contactMePage(){
+        return view('login.contactMe');
+    }
+
+    public function leaveMessage(Request $req){
+        // 收件者務必使用 collect 指定二維陣列，每個項目務必包含 "name", "email"
+        $userName=$req->userName;
+        $userEmail=$req->userEmail;
+        $userComment=$req->userComment;
+
+        //這裡要寄給寄給我的人，跟寄給我，因為是分開兩封mail所以要寄兩次
+        //先寄給我，再寄給寄給我的人
+        $to = collect([
+            ['name' => 'cooldeark', 'email' => 'cooldeark@gmail.com']
+        ]);
+        $sendMailParams=array('userSendtoMyself'=>'','userComment'=>$userComment,'userMail'=>$userEmail,'userName'=>$userName);
+        Mail::to($to)->send(new sendMail($sendMailParams));
+        
+        //寄給user的拉
+        $to = collect([
+            ['name' => $userName, 'email' => $userEmail]
+        ]);
+        $sendMailParams=array('sendToUser'=>'','userName'=>$userName);
+        Mail::to($to)->send(new sendMail($sendMailParams));
+        return Redirect::back()->withErrors(['sendSuccess'=>'信件已寄送完成，可確認您信箱是否有收到信!']);
+
+    }
+
 
     public function testEmail(){
-        $message = "Hi , please click link to verify your Account :".PHP_EOL." https://www.yangminglin.tk/confirmEmail?userMail=".PHP_EOL.PHP_EOL."Best Regards".PHP_EOL."JamesLin";
+        $message = "Hi , please click link to verify your Account :".PHP_EOL.url('/')."/confirmEmail?userMail=".PHP_EOL.PHP_EOL."Best Regards".PHP_EOL."JamesLin";
         $data=['tel'=>'12345678'];
         Mail::send('login.post',$data, function($message)
         {

@@ -73,9 +73,11 @@
             <b>Backend : </b>
             PHP<br><br>
             <b>Database : </b>
-            SQL 、BigQuery 、Athena<br><br>
+            SQL 、 Redis 、BigQuery 、Athena<br><br>
             <b>Cloud : </b>
             GCP、 AWS<br><br>
+            <b>Other : </b>
+            Docker、Git<br><br>
           </h3>
         </div> 
     </section>

@@ -63,13 +63,13 @@
                             <a href="{{url('/product')}}" >案件介紹</a>
                         </li>
                         <li>
-                            <a href="http://www.yangminglin.ga/" target="_blank">前往-卡洛塔妮</a>
+                            <a href="http://www.yangminglin.gq/" target="_blank">前往-卡洛塔妮</a>
                         </li>
                         <li>
                             <a href="http://www.yangminglin.cf/" target="_blank">前往-快點集團</a>
                         </li>
                         <li>
-                            <a href="http://www.yangminglin.ml/" target="_blank">前往-樂寫網</a>
+                            <a href="http://www.colearn30.com/" target="_blank">前往-樂寫網</a>
                         </li>
                     </ul>
                 </li>
